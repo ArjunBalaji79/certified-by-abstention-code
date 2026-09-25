@@ -16,7 +16,7 @@
 
 \paragraph{Scorers.} Standardization followed by $\ell_2$-regularized logistic regression ($C=1.0$ for the four readable signals, $C=0.01$ for the probe), fit on all traces of the 30\% training problems, separately for 5 seeds of the train split, and frozen. The target levels $\alpha=\rho\,\pizero$ use $\pizero$ estimated on the training partition of the same seed.
 
-\paragraph{Compute.} Generation and feature extraction ran on single A100 GPUs from a commercial cloud provider, for a total cost of roughly US\$50. All certificate analyses run on a laptop CPU in minutes from the cached per-trace scores in the supplement.
+\paragraph{Compute.} Generation and feature extraction ran on single A100 GPUs from a commercial cloud provider, for a total cost of roughly US\$50. All certificate analyses run on a laptop CPU from the cached per-trace scores. Code, data, the compiled outputs and a script that regenerates every table and figure are in the anonymized repository \url{https://anonymous.4open.science/r/certified-by-abstention-4D8B/} (about 70 minutes end to end; a manifest of SHA-256 hashes lets the outputs be checked without rerunning).
 
 \paragraph{Best-of-$n$ details.} The certificate arms draw best-of-$n$ subsets by Monte Carlo from 32 traces per problem; the accuracy curves use the closed-form rank weights. Exact duplicate traces (6\% and 15\% of samples for the two models) make score ties common; ties are broken by a fixed random key, and tied traces share a label.
 

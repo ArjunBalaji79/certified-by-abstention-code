@@ -67,7 +67,7 @@ def load_model(slug):
     p = os.path.join(SCORES, f"scores_{slug}.npz")
     if not os.path.exists(p):
         return None
-    z = np.load(p, allow_pickle=True)
+    z = np.load(p)
     d = {k: z[k] for k in z.files}
     return {"data": d,
             "benches": sorted({k.split("__")[1] for k in d if k.startswith("y__")}),

@@ -36,9 +36,9 @@ def load(slug):
     fp = os.path.join(DEPTHS, f"features_{slug}.npz")
     if not (os.path.exists(sp) and os.path.exists(dp) and os.path.exists(fp)):
         return None
-    S = dict(np.load(sp, allow_pickle=True))
-    D = dict(np.load(dp, allow_pickle=True))
-    F = dict(np.load(fp, allow_pickle=True))
+    S = dict(np.load(sp))
+    D = dict(np.load(dp))
+    F = dict(np.load(fp))
     y = F["y"].astype(int)
     groups = np.array([str(g) for g in F["groups"]])
     X = {}

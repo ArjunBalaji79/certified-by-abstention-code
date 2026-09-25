@@ -1,6 +1,6 @@
 # Data
 
-All files are NumPy `.npz` archives, row-aligned within a model. One row is one sampled chain-of-thought trace. `groups` is the problem id (the unit for all splits), `y` is 1 if the trace's final answer matched the gold answer.
+All files are NumPy `.npz` archives containing only numeric and fixed-width string arrays (no pickled objects; they load with `allow_pickle=False`, which is what every loader in `src/` uses). Files are row-aligned within a model. One row is one sampled chain-of-thought trace. `groups` is the problem id (the unit for all splits), `y` is 1 if the trace's final answer matched the gold answer.
 
 ## `scores/scores_<model>.npz` (7 models)
 

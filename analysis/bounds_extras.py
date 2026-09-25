@@ -93,7 +93,7 @@ def real_data():
     models = sorted(f[len("scores_"):-4] for f in os.listdir(ct.SCORES)
                     if f.startswith("scores_") and f.endswith(".npz"))
     for slug in models:
-        d = dict(np.load(os.path.join(ct.SCORES, f"scores_{slug}.npz"), allow_pickle=True))
+        d = dict(np.load(os.path.join(ct.SCORES, f"scores_{slug}.npz")))
         if "y__gsm8k" not in d:
             continue
         y = d["y__gsm8k"].astype(int)

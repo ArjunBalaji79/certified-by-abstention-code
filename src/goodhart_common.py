@@ -34,7 +34,7 @@ def load(slug):
     p = os.path.join(GH, f"scores_{slug}.npz")
     if not os.path.exists(p):
         return None
-    z = np.load(p, allow_pickle=True)
+    z = np.load(p)
     d = {k: z[k] for k in z.files}
     y = d["y"].astype(int)
     groups = np.array([str(g) for g in d["groups"]])

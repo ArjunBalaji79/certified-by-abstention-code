@@ -128,7 +128,7 @@ def rerank_curves(slug, n_boot=1000, seed=7):
     """Selected-trace accuracy under exact pooled best-of-n, as change from n=1,
     with a grouped (by-problem) bootstrap band. Same K=32 draw convention as
     the best-of-n analysis; bands average over 20 draws of the K-subset."""
-    z = np.load(os.path.join(GH, f"scores_{slug}.npz"), allow_pickle=True)
+    z = np.load(os.path.join(GH, f"scores_{slug}.npz"))
     y = z["y"].astype(int)
     groups = np.array([str(g) for g in z["groups"]])
     by_p = {}

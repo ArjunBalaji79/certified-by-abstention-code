@@ -68,7 +68,7 @@ def pilot_pi0(slug, scores_dir):
     """Mean over seeds of the GSM8K training-partition base error: an exogenous
     pilot estimate for experiments on other problems of the same model."""
     import os
-    z = np.load(os.path.join(scores_dir, f"scores_{slug}.npz"), allow_pickle=True)
+    z = np.load(os.path.join(scores_dir, f"scores_{slug}.npz"))
     y = z["y__gsm8k"].astype(int)
     vals = [train_pi0(y, z[k]) for k in z.files if k.startswith("trainmask__gsm8k__s")]
     return float(np.mean(vals)), [round(v, 4) for v in vals]

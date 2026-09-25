@@ -33,9 +33,9 @@ DEPTHS = paths.FEATURES
 
 
 def features(slug, sig):
-    F = np.load(os.path.join(DEPTHS, f"features_{slug}.npz"), allow_pickle=True)
+    F = np.load(os.path.join(DEPTHS, f"features_{slug}.npz"))
     if sig == "probe":
-        D = np.load(os.path.join(DEPTHS, f"probe_depths_{slug}.npz"), allow_pickle=True)
+        D = np.load(os.path.join(DEPTHS, f"probe_depths_{slug}.npz"))
         return np.concatenate([D["mid_step"], D["mid_ans"]], axis=1).astype(np.float32)
     return np.nan_to_num(F[FEAT[sig]].astype(np.float64))
 

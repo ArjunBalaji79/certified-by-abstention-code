@@ -1,0 +1,25 @@
+\begin{table}[H]
+\centering\scriptsize
+\caption{Best-of-$n$ selection (Section~\ref{sec:pressure}) per model and signal. $P_{\mathrm{fire}}$: firing probability of the naive arm (independent of $n$). $\hat R/\alpha$: error among accepted BoN-selected test traces relative to the target, naive arm (-- where fewer than 2\% of replicates fire). Corrected: mean coverage of the selection-conditional arm at $n=1$ and $n=32$. $\Delta$acc: change in accuracy of the selected trace from $n=1$ to $n=32$, and from its peak over $n$ to $n=32$.}
+\label{tab:bon}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{ll c ccc cc cc}
+\toprule
+ & & & \multicolumn{3}{c}{$\hat R/\alpha$, naive} & \multicolumn{2}{c}{Corrected cov.} & \multicolumn{2}{c}{$\Delta$acc} \\
+\cmidrule(lr){4-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}
+Model & Signal & $P_{\mathrm{fire}}$ & $n{=}1$ & $n{=}8$ & $n{=}32$ & $n{=}1$ & $n{=}32$ & $n{=}32$ & from peak \\
+\midrule
+Qwen3.5-4B & confidence & 0.031 & 0.92 & 1.14 & 1.25 & 0.019 & 0.002 & -0.004 & -0.022 \\
+ & J-lens & 0.015 & -- & -- & -- & 0.008 & 0.000 & +0.001 & -0.016 \\
+ & probe & 0.136 & 0.70 & 0.89 & 0.69 & 0.087 & 0.222 & +0.038 & +0.000 \\
+ & logit lens & 0.014 & -- & -- & -- & 0.008 & 0.000 & -0.017 & -0.032 \\
+ & surface & 0.002 & -- & -- & -- & 0.001 & 0.000 & -0.040 & -0.040 \\
+\addlinespace
+Qwen3-4B & confidence & 0.093 & 0.78 & 0.91 & 1.12 & 0.054 & 0.005 & +0.001 & -0.006 \\
+ & J-lens & 0.007 & -- & -- & -- & 0.006 & 0.000 & +0.005 & -0.005 \\
+ & probe & 0.045 & 0.87 & 1.33 & 1.52 & 0.026 & 0.000 & -0.029 & -0.031 \\
+ & logit lens & 0.008 & -- & -- & -- & 0.004 & 0.000 & -0.001 & -0.003 \\
+ & surface & 0.007 & -- & -- & -- & 0.005 & 0.000 & -0.017 & -0.017 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,44 @@
+\begin{table}[H]
+\centering\scriptsize
+\caption{Every shift cell (Section~\ref{sec:shift}): GSM8K-trained scorer and GSM8K-calibrated threshold ($\alpha$: training-partition base error on GSM8K) applied to the same model's traces on another benchmark. $\pi_{\mathrm{new}}$: base error rate on the new benchmark. Per signal: mean coverage and $\hat R$, the error among accepted traces pooled over firing replicates; bold where $\hat R>\alpha$. 1{,}000 replicates per cell.}
+\label{tab:shift}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{ll cc cc cc cc}
+\toprule
+ & & & & \multicolumn{2}{c}{Confidence} & \multicolumn{2}{c}{J-lens} & \multicolumn{2}{c}{Probe} \\
+\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}
+Model & Benchmark & $\pi_{\mathrm{new}}$ & $\alpha$ & Cov. & $\hat R$ & Cov. & $\hat R$ & Cov. & $\hat R$ \\
+\midrule
+Qwen3.5-0.8B & ARC-C & 0.77 & 0.64 & 0.00 & 0.61 & 0.06 & \textbf{0.83} & 0.27 & \textbf{0.75} \\
+ & BBH-logic & 0.61 & 0.64 & 0.07 & 0.55 & 0.05 & 0.59 & 0.09 & 0.60 \\
+ & CSQA & 0.79 & 0.64 & 0.00 & 0.01 & 0.05 & \textbf{0.86} & 0.27 & \textbf{0.76} \\
+ & StrategyQA & 0.47 & 0.64 & 0.00 & 0.49 & 0.10 & 0.47 & 0.13 & 0.44 \\
+\addlinespace
+Qwen3.5-4B & ARC-C & 0.07 & 0.16 & 0.11 & 0.02 & 0.27 & 0.07 & 0.60 & 0.06 \\
+ & BBH-logic & 0.19 & 0.16 & 0.29 & \textbf{0.20} & 0.28 & \textbf{0.19} & 0.60 & \textbf{0.17} \\
+ & CSQA & 0.20 & 0.16 & 0.05 & 0.10 & 0.23 & 0.16 & 0.52 & 0.15 \\
+ & StrategyQA & 0.33 & 0.16 & 0.09 & \textbf{0.27} & 0.23 & \textbf{0.34} & 0.59 & \textbf{0.29} \\
+\addlinespace
+OLMo-3-7B & ARC-C & 0.26 & 0.34 & 0.21 & 0.22 & 0.09 & 0.32 & 0.44 & 0.24 \\
+ & BBH-logic & 0.63 & 0.34 & 0.44 & \textbf{0.60} & 0.07 & \textbf{0.57} & 0.35 & \textbf{0.62} \\
+ & CSQA & 0.30 & 0.34 & 0.20 & 0.33 & 0.06 & 0.32 & 0.52 & 0.33 \\
+\addlinespace
+Qwen3-1.7B & ARC-C & 0.19 & 0.21 & 0.09 & 0.12 & 0.14 & 0.18 & 0.11 & 0.13 \\
+ & CSQA & 0.35 & 0.21 & 0.10 & \textbf{0.29} & 0.14 & \textbf{0.35} & 0.10 & \textbf{0.29} \\
+ & StrategyQA & 0.36 & 0.21 & 0.04 & \textbf{0.32} & 0.14 & \textbf{0.36} & 0.06 & \textbf{0.36} \\
+\addlinespace
+Qwen2.5-7B-It & ARC-C & 0.11 & 0.22 & 0.34 & 0.12 & 0.41 & 0.12 & 0.35 & 0.11 \\
+ & BBH-logic & 0.41 & 0.22 & 0.33 & \textbf{0.42} & 0.42 & \textbf{0.45} & 0.39 & \textbf{0.40} \\
+ & CSQA & 0.19 & 0.22 & 0.35 & 0.17 & 0.43 & 0.16 & 0.41 & 0.17 \\
+ & StrategyQA & 0.27 & 0.22 & 0.34 & \textbf{0.26} & 0.37 & \textbf{0.25} & 0.42 & \textbf{0.26} \\
+\addlinespace
+Qwen3-4B & ARC-C & 0.15 & 0.10 & 0.31 & \textbf{0.11} & 0.29 & \textbf{0.14} & 0.37 & \textbf{0.12} \\
+ & BBH-logic & 0.18 & 0.10 & 0.36 & \textbf{0.18} & 0.27 & \textbf{0.19} & 0.42 & \textbf{0.18} \\
+ & StrategyQA & 0.26 & 0.10 & 0.27 & \textbf{0.23} & 0.32 & \textbf{0.24} & 0.30 & \textbf{0.24} \\
+\addlinespace
+Qwen3-8B & ARC-C & 0.08 & 0.09 & 0.02 & 0.02 & 0.01 & 0.07 & 0.10 & 0.08 \\
+ & CSQA & 0.18 & 0.09 & 0.01 & \textbf{0.12} & 0.01 & \textbf{0.18} & 0.08 & \textbf{0.17} \\
+ & StrategyQA & 0.23 & 0.09 & 0.02 & \textbf{0.23} & 0.01 & \textbf{0.22} & 0.13 & \textbf{0.23} \\
+\bottomrule
+\end{tabular}
+\end{table}

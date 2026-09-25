@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering\scriptsize
+\caption{CP selective certificate (rule~\eqref{eq:cert}) on GSM8K, $\delta=0.10$, 1{,}000 replicates per cell. $n_{\mathrm{cal}}$: calibration problems. $\hat\pi_0$: base error rate of the training partition (mean over seeds), which sets the targets; $\pi_0^{\mathrm{held}}$: base error rate of the remaining problems. For each signal: mean coverage, $P_{\mathrm{fire}}$ and $\hat R/\alpha$ (error among accepted test traces pooled over firing replicates, relative to the target; -- if fewer than 50 replicates fire) at the boundary target $\alpha=\hat\pi_0$, and coverage and $P_{\mathrm{fire}}$ at $\alpha=0.75\hat\pi_0$. Test AUCs of the frozen scorers are in Appendix Table~\ref{tab:bh}.}
+\label{tab:main}
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{lrrr rrrrr rrrrr rrrrr}
+\toprule
+ & & & & \multicolumn{5}{c}{Confidence} & \multicolumn{5}{c}{J-lens} & \multicolumn{5}{c}{Probe} \\
+\cmidrule(lr){5-9}\cmidrule(lr){10-14}\cmidrule(lr){15-19}
+ & & & & \multicolumn{3}{c}{$\alpha=\hat\pi_0$} & \multicolumn{2}{c}{$0.75\hat\pi_0$} & \multicolumn{3}{c}{$\alpha=\hat\pi_0$} & \multicolumn{2}{c}{$0.75\hat\pi_0$} & \multicolumn{3}{c}{$\alpha=\hat\pi_0$} & \multicolumn{2}{c}{$0.75\hat\pi_0$} \\
+\cmidrule(lr){5-7}\cmidrule(lr){8-9}\cmidrule(lr){10-12}\cmidrule(lr){13-14}\cmidrule(lr){15-17}\cmidrule(lr){18-19}
+Model & $n_{\mathrm{cal}}$ & $\hat\pi_0$ & $\pi_0^{\mathrm{held}}$ & Cov. & $P_{\mathrm{fire}}$ & $\hat R/\alpha$ & Cov. & $P_{\mathrm{fire}}$ & Cov. & $P_{\mathrm{fire}}$ & $\hat R/\alpha$ & Cov. & $P_{\mathrm{fire}}$ & Cov. & $P_{\mathrm{fire}}$ & $\hat R/\alpha$ & Cov. & $P_{\mathrm{fire}}$ \\
+\midrule
+Qwen3.5-0.8B & 158 & 0.64 & 0.68 & 0.22 & 0.578 & 0.83 & 0.01 & 0.045 & 0.08 & 0.251 & 0.91 & 0.00 & 0.013 & 0.49 & 0.963 & 0.79 & 0.06 & 0.380 \\
+Qwen3.5-4B & 154 & 0.16 & 0.16 & 0.39 & 0.571 & 0.63 & 0.11 & 0.220 & 0.18 & 0.239 & 0.79 & 0.02 & 0.045 & 0.72 & 0.934 & 0.53 & 0.39 & 0.618 \\
+OLMo-3-7B & 67 & 0.34 & 0.34 & 0.33 & 0.533 & 0.67 & 0.10 & 0.192 & 0.08 & 0.160 & 0.90 & 0.01 & 0.021 & 0.34 & 0.538 & 0.68 & 0.09 & 0.208 \\
+Qwen3-1.7B & 78 & 0.21 & 0.22 & 0.09 & 0.115 & 0.92 & 0.01 & 0.012 & 0.04 & 0.054 & 1.07 & 0.00 & 0.006 & 0.21 & 0.293 & 0.72 & 0.05 & 0.094 \\
+Qwen2.5-7B-It & 71 & 0.22 & 0.18 & 0.15 & 0.187 & 0.76 & 0.01 & 0.016 & 0.16 & 0.240 & 0.73 & 0.03 & 0.061 & 0.23 & 0.313 & 0.68 & 0.03 & 0.058 \\
+Qwen3-4B & 153 & 0.10 & 0.09 & 0.20 & 0.250 & 0.80 & 0.03 & 0.052 & 0.15 & 0.194 & 0.85 & 0.02 & 0.029 & 0.31 & 0.387 & 0.68 & 0.08 & 0.114 \\
+Qwen3-8B & 74 & 0.09 & 0.09 & 0.02 & 0.020 & -- & 0.00 & 0.002 & 0.01 & 0.016 & -- & 0.00 & 0.001 & 0.04 & 0.051 & 0.93 & 0.00 & 0.005 \\
+\bottomrule
+\end{tabular}
+\end{table*}

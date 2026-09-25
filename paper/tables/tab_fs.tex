@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering\scriptsize
+\caption{FS-floor (cross-fitted grid, $c$ chosen before calibration by simulation) against the Bonferroni CP rule~\eqref{eq:cert}, $\delta=0.10$. Top: Gaussian score model with known risk at the given AUC and calibration size $n$, 20{,}000 draws; $P_{\mathrm{fail}}=P(R(\hat\lambda)>\alpha)$. Bottom: means over 7 models $\times$ 3 signals, 1{,}000 replicates each; $^{\ast}$median of the per-cell choices of $c$.}
+\label{tab:fs}
+\setlength{\tabcolsep}{2.8pt}
+\begin{tabular}{rrl cc cccc}
+\toprule
+ & & & \multicolumn{2}{c}{CP, Eq.~\eqref{eq:cert}} & \multicolumn{4}{c}{FS-floor} \\
+\cmidrule(lr){4-5}\cmidrule(lr){6-9}
+AUC & $n$ & $\alpha$ & Cov. & $P_{\mathrm{fire}}$ & $c$ & Cov. & $P_{\mathrm{fire}}$ & $P_{\mathrm{fail}}$ \\
+\midrule
+0.82 & 154 & $0.75\pi_0$ & 0.321 & 0.55 & 4 & 0.635 & 0.85 & 0.053 \\
+0.82 & 154 & $0.5\pi_0$ & 0.051 & 0.09 & 2 & 0.272 & 0.49 & 0.039 \\
+0.71 & 154 & $0.75\pi_0$ & 0.052 & 0.11 & 3 & 0.231 & 0.40 & 0.040 \\
+0.71 & 154 & $0.5\pi_0$ & 0.003 & 0.01 & 1.5 & 0.045 & 0.12 & 0.022 \\
+0.76 & 78 & $0.75\pi_0$ & 0.061 & 0.12 & 3 & 0.262 & 0.40 & 0.043 \\
+0.66 & 153 & $0.75\pi_0$ & 0.010 & 0.02 & 2 & 0.083 & 0.14 & 0.023 \\
+\midrule
+\multicolumn{2}{l}{real, 21 pairs} & $\pi_0$ & 0.211 & 0.33 & 4$^{\ast}$ & 0.390 & 0.50 & -- \\
+\multicolumn{2}{l}{real, 21 pairs} & $0.75\pi_0$ & 0.051 & 0.10 & 3$^{\ast}$ & 0.163 & 0.28 & -- \\
+\multicolumn{2}{l}{real, 21 pairs} & $0.5\pi_0$ & 0.004 & 0.01 & 1.5$^{\ast}$ & 0.033 & 0.07 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}

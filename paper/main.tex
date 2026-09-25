@@ -1,0 +1,269 @@
+\documentclass[twoside]{article}
+
+\usepackage{aistats2027}
+% \usepackage[accepted]{aistats2027}
+
+\usepackage[round]{natbib}
+\renewcommand{\bibname}{References}
+\renewcommand{\bibsection}{\subsubsection*{\bibname}}
+\bibliographystyle{apalike}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Rsel}{R}
+\newcommand{\lamhat}{\hat\lambda}
+\newcommand{\Ucp}{U_{\mathrm{CP}}}
+\newcommand{\pizero}{\pi_0}
+\newcommand{\pfire}{P_{\mathrm{fire}}}
+
+\begin{document}
+
+\twocolumn[
+
+\aistatstitle{Certified by Abstention: Distribution-Free Guarantees for\\ Chain-of-Thought Verifiers at Small Calibration Budgets}
+
+\aistatsauthor{ Anonymous Author(s) }
+
+\aistatsaddress{ Anonymous Institution(s) } ]
+
+\begin{abstract}
+Signals that predict whether a chain-of-thought (CoT) trace is correct are compared by AUC, but deploying one requires a threshold with a guarantee. We ask what distribution-free selective guarantees deliver for CoT verifiers at realistic calibration budgets of tens to a few hundred labelled problems, using seven open models, five verifier signals and 37{,}000 graded traces. The central observation is \emph{validity by abstention}: an $(\alpha,\delta)$-valid procedure that issues a certificate with probability $\pfire$ bounds the failure probability of an issued certificate only by $\delta/\pfire$, so a certificate that rarely fires can be valid and wrong every time it is used. In a simulation with known risk the standard certificate fails in at most $0.3\%$ of calibration draws overall but in up to $69\%$ of the draws in which it fires. Two exact facts explain why certificates abstain at these budgets, a \emph{certification floor} on the accepted calibration set and a \emph{lattice condition} for Benjamini--Hochberg conformal selection, and the data bear them out: the standard certificate returns nothing or a large accepted set, and an unreadable residual-stream probe buys two to three times the coverage of the readable signals, an edge that a cross-fitted reconstruction shows is not linearly recoverable from the readable features. We then give a \emph{floor-started fixed-sequence certificate}, valid without monotonicity assumptions, that covers more than the Bonferroni certificate on every model--signal pair and raises coverage at the non-vacuous target $0.75\pizero$ from $0.05$ to $0.16$, although the floor keeps absolute coverage small. Finally, a certificate cannot see what matters after deployment: under benchmark shift the error among accepted traces tracks the new task's base error, and under best-of-$n$ selection against the verifier it rises past the target while the empirical failure frequency stays below $\delta$, because abstention absorbs the failures.
+\end{abstract}
+
+\section{INTRODUCTION}
+
+Correctness of a language model's reasoning can be predicted from cheap signals: the model's token probabilities \citep{kadavath2022know}, linear probes on hidden states \citep{azaria2023internal,burns2023discovering,zhang2025reasoning}, or readouts that decode intermediate activations into vocabulary space \citep{nostalgebraist2020logit,belrose2023tuned,gurnee2026workspace}. Such \emph{verifier signals} are compared almost exclusively by ranking metrics. A deployed verifier, however, is a threshold: traces scoring above it are accepted without further checking, and the operator needs to know how often an accepted trace is wrong.
+
+Distribution-free methods promise this. Given a labelled calibration set, selective certificates \citep{geifman2017selective}, risk-controlling procedures \citep{bates2021rcps,angelopoulos2021ltt} and conformal selection \citep{jin2023selection,gui2024conformal} return an acceptance rule whose error is bounded with finite-sample validity under exchangeability alone. Their validity is not in question. What is rarely reported is what they \emph{deliver} when labels are scarce, the target is non-vacuous, and the accepted traces are then optimized against. For CoT verification, calibration labels require graded solutions, and realistic budgets are tens to a few hundred problems.
+
+We study this regime with seven open-weight models (0.8B--8B parameters, three families), five verifier signals spanning the interpretability spectrum, and about 37{,}000 graded traces. The target is the \emph{selective error} $P(\text{wrong}\mid\text{accepted})$. A target $\alpha$ is \emph{non-vacuous} if it lies strictly below the model's unconditional error rate $\pizero$.
+
+\paragraph{Contributions.}
+\textbf{(1) Validity by abstention} (\S\ref{sec:theory}). An $(\alpha,\delta)$-valid procedure that issues a certificate with probability $\pfire$ bounds the failure probability of an \emph{issued} certificate only by $\delta/\pfire$ (Proposition~\ref{prop:abstain}). A certificate that rarely fires can therefore be valid and wrong every time it is used, and in a simulation with known risk the standard certificate does exactly that: it fails in at most $0.3\%$ of draws overall and in up to $69\%$ of the draws in which it fires (\S\ref{sec:synthetic}). $\pfire$ is a quantity every certification study should report.
+\textbf{(2) Why certificates abstain at small budgets} (\S\ref{sec:theory}, \S\ref{sec:attain}). A \emph{certification floor} (Lemma~\ref{lem:floor}) gives the smallest accepted calibration set that can certify a target, and a \emph{lattice condition} (Proposition~\ref{prop:lattice}) decides exactly when BH conformal selection can reject anything. On seven models with 67--158 calibration problems the standard certificate is bimodal, abstaining or accepting a large set; at the non-vacuous target $0.75\pizero$ it fires in at most $10\%$ of calibration draws for 15 of 21 model--signal pairs, and only one readable signal on one model reaches $10\%$ coverage at any target below the base error rate. Coverage tracks the score's AUC more than model accuracy in this model set. An unreadable residual probe buys two to three times the coverage of the readable signals at the boundary target and more below it, and a cross-fitted reconstruction shows that this edge is not linearly recoverable from the 119 readable features. The exact binomial bound is the tightest non-randomized bound on its statistic, so the lever is the multiplicity correction, not the bound.
+\textbf{(3) A certificate that starts at the floor} (\S\ref{sec:fs}). FS-floor is fixed-sequence Learn-then-Test \citep{angelopoulos2021ltt} with thresholds fixed from the training split, a start at the floor of Lemma~\ref{lem:floor}, and a start constant chosen by simulation before calibration. It is valid with no monotonicity assumption and covers more than the Bonferroni certificate on all 21 model--signal pairs at every target: at the non-vacuous target $0.75\pizero$ mean coverage rises from $0.05$ to $0.16$ and the certificate fires in $28\%$ rather than $10\%$ of calibration draws. The floor still binds, and a budget curve (Figure~\ref{fig:budget}) shows what larger calibration sets would buy.
+\textbf{(4) What a certificate cannot see} (\S\ref{sec:shift}, \S\ref{sec:pressure}). Under benchmark shift the error among accepted traces tracks the new task's base error (Spearman $0.88$): the target is exceeded in 40 of the 45 cells where the new task is harder and in none of the 27 where it is easier; under best-of-$n$ selection against the verifier it rises with $n$ past the target for several signals while the empirical failure frequency stays below $\delta$, because abstention absorbs the failures; the selected trace's accuracy degrades.
+
+\section{SETTING}
+\label{sec:setting}
+
+\paragraph{Traces, labels, scores.} For a problem $x$ a model samples a CoT trace $z$ at temperature $0.8$; $Y=1$ if its final answer matches the gold answer. A verifier signal is a map $s(z)\in\mathbb{R}$, fit on a training split and then frozen. We accept $z$ when $s(z)\ge\lambda$. The \emph{selective risk} and \emph{coverage} of a threshold are
+\begin{align*}
+\Rsel(\lambda)&=P\big(Y=0\mid s(Z)\ge\lambda\big),\\
+C(\lambda)&=P\big(s(Z)\ge\lambda\big),
+\end{align*}
+with $\Rsel(\infty)=0$. Let $\pizero=P(Y=0)$. A procedure mapping a calibration set to $\lamhat$ is \emph{$(\alpha,\delta)$-valid} if $P(\Rsel(\lamhat)\le\alpha)\ge1-\delta$. It \emph{fires} when $\lamhat<\infty$, and $\pfire=P(\lamhat<\infty)$. Our primary target is the boundary $\alpha=\pizero$; we also report $\alpha\in\{0.5\pizero,0.75\pizero\}$ and $\alpha\in\{0.05,0.10,0.20\}$. At $\alpha=\pizero$ accepting everything is itself a correct answer, so this target measures whether the certificate can confirm what is true by construction; the targets below $\pizero$ are the non-vacuous ones, and even they can be loose in absolute terms (for the 33\%-accurate model, $0.75\pizero$ is an error rate of $0.50$).
+
+\paragraph{Signals.} Each signal is a regularized logistic regression on a fixed feature set (Appendix~\ref{app:signals}).
+\emph{Confidence}: 5 summary statistics of the token log-probabilities of the trace.
+\emph{J-lens}: 51 trajectory features (velocity, curvature, entropy and churn of the top-20 decoded tokens across reasoning steps) of residual-stream states decoded with the Jacobian lens of \citet{gurnee2026workspace}.
+\emph{Logit lens}: the same features with the Jacobian transport disabled \citep{nostalgebraist2020logit}.
+\emph{Surface}: geometric features of sentence embeddings \citep{reimers2019sentence} of the written steps.
+\emph{Probe}: a linear probe on mid-depth residual vectors (mean over step positions, concatenated with the answer position).
+The first four have human-inspectable features; the probe does not. The lens is prior work and serves as a representative interpretable signal.
+
+\paragraph{The certificate.} Our main procedure is a Clopper--Pearson (CP) selective threshold \citep{clopper1934use,geifman2017selective}. Sort the $n$ calibration scores decreasingly, $s_{(1)}\ge\dots\ge s_{(n)}$, and let $e_k$ count incorrect traces among the top $k$. For a grid $\mathcal K\subset\{10,\dots,n\}$ of $G\le20$ equally spaced sizes fixed in advance, test the $k-1$ traces strictly above $s_{(k)}$:
+\begin{equation}
+\begin{aligned}
+\hat k&=\max\{k\in\mathcal K:\ \Ucp(e_{k-1},k-1;\delta/G)\le\alpha\},\\ \lamhat&=s_{(\hat k)},
+\end{aligned}
+\label{eq:cert}
+\end{equation}
+accept a test trace when $s(z)>\lamhat$, and abstain ($\lamhat=\infty$) if the set is empty. $\Ucp(e,k;\delta')$ is the one-sided $1-\delta'$ CP upper limit, the $1-\delta'$ quantile of $\mathrm{Beta}(e+1,k-e)$. We use $\delta=0.10$.
+
+\begin{proposition}[Validity]
+\label{prop:valid}
+Let calibration traces be i.i.d.\ with continuous scores. Then rule \eqref{eq:cert} is $(\alpha,\delta)$-valid.
+\end{proposition}
+
+The proof (Appendix~\ref{app:proofs}) uses only that, conditional on $s_{(k)}=t$, the $k-1$ traces above $t$ are i.i.d.\ from the law of $(Y,s(Z))$ given $s(Z)>t$, so $e_{k-1}\sim\mathrm{Bin}(k-1,\Rsel(t))$, and a union bound over $\mathcal K$. Implementations often count the boundary trace as well, testing $(e_k,k)$ and accepting $s\ge\lamhat$; that variant needs $P(Y=0\mid s(Z)=t)\ge\Rsel(t)$ for all $t$ and is compared in Appendix~\ref{app:exact}.
+
+\paragraph{Alternatives.} (i) The same construction with the CP limit replaced by the Hoeffding--Bentkus p-value \citep{bates2021rcps,bentkus2004hoeffding,angelopoulos2021ltt} or a mixture betting e-value \citep{waudby2024betting}, on the same grid with the same split. (ii) Conformal selection \citep{jin2023selection}: p-values $p_j=(1+\#\{i:Y_i=0,\,s_i\ge s_j\})/(n_0+1)$ against the $n_0$ incorrect calibration traces, then Benjamini--Hochberg \citep{benjamini1995controlling} at level $\alpha$, which controls the false discovery rate among accepted traces. Conformal risk control \citep{angelopoulos2024crc} does not apply directly, since selective error is not monotone in $\lambda$.
+
+\paragraph{Protocol.} Problems are split 30/40/30\% into train (scorer fitting), calibration and test, \emph{by problem}. Traces from one problem are dependent, so the unit of analysis is \emph{one trace per problem}, redrawn in every replicate; calibration and test units are then exchangeable. Each configuration is evaluated over 1{,}000 replicates (200 resplits for each of 5 scorer seeds). The relative targets $\alpha=\rho\pizero$ use the base error rate of the \emph{training} partition of the same seed, so every target is fixed before any calibration trace is seen; in the experimental sections $\pizero$ denotes this estimate (its five values per model span about $\pm0.02$), and the base error of the remaining problems serves only to classify a target as vacuous or not. For each we report mean coverage over all replicates, $\pfire$, and $\hat R$, the error rate among accepted test traces pooled over firing replicates (a coverage-weighted estimate of $E[\Rsel(\lamhat)\mid\text{fire}]$).
+
+\section{THREE STRUCTURAL FACTS}
+\label{sec:theory}
+
+The statements below have short proofs. We give them because they account for most of what we observe and, to our knowledge, have not been stated for verifier certification.
+
+\begin{lemma}[Certification floor]
+\label{lem:floor}
+Rule \eqref{eq:cert} can fire only if some $k\in\mathcal K$ satisfies $k-1\ge a^\star_0$, where
+\[
+a^\star_0(\alpha,\delta/G):=\left\lceil \frac{\log (G/\delta)}{-\log(1-\alpha)}\right\rceil ,
+\]
+and this $k$ suffices only if the $k-1$ calibration traces above $s_{(k)}$ contain no error. Certifying an accepted set with $e$ errors requires $k-1\ge a^\star_e$, the smallest $m$ with $\Ucp(e,m;\delta/G)\le\alpha$, which increases with $e$.
+\end{lemma}
+
+\begin{proof}
+$\Ucp(0,m;\delta')=1-\delta'^{1/m}\le\alpha$ iff $m\ge\log\delta'/\log(1-\alpha)$. Monotonicity in $e$ follows from the stochastic ordering of $\mathrm{Beta}(e+1,k-e)$ in $e$.
+\end{proof}
+
+At $\alpha=0.10$, $\delta=0.10$, $G=20$ the floor is $a_0^\star=51$: the 51 calibration traces above the threshold must \emph{all} be correct. For a model with $\pizero=0.0886$ calibrated on 74 problems (our Qwen3-8B cell) at $\alpha=\pizero$, the floor is 58: a score with AUC near $0.6$ must place none of about seven calibration errors among the 58 traces above the threshold, 78\% of the calibration set. Figure~\ref{fig:floor} plots $a^\star$ for accepted sets whose error fraction is $0$, $\alpha/4$ and $\alpha/2$. An accepted set running at half the target needs about 195 accepted calibration points at $\alpha=0.10$, more than any calibration set here. Dropping the Bonferroni grid altogether (dashed) lowers the floor by a factor of about $2.3$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/fig_floor.pdf}
+\caption{Certification floor (Lemma~\ref{lem:floor}): minimum number of calibration traces above the threshold for the CP certificate to certify $\alpha$ ($\delta=0.10$, $G=20$) when a fraction $\varepsilon$ of them are errors. Shaded: calibration-set sizes in this study (67--158). Analytic; no data.}
+\label{fig:floor}
+\end{figure}
+
+\begin{proposition}[Lattice condition for conformal selection]
+\label{prop:lattice}
+Let $p_1,\dots,p_m$ be conformal p-values against $n_0$ calibration nulls, with empirical c.d.f.\ $\hat F_m$. BH at level $\alpha$ makes either no rejection or at least $\lceil m/(\alpha(n_0+1))\rceil$ rejections, and it rejects if and only if
+\[
+\exists\,k\in\{1,\dots,n_0+1\}:\quad \hat F_m\!\Big(\frac{k}{n_0+1}\Big)\ \ge\ \frac{k}{\alpha\,(n_0+1)} .
+\]
+In particular, if a fraction $q\ge 1/(\alpha(n_0+1))$ of test traces outscores every calibration null, BH rejects.
+\end{proposition}
+
+The proof (Appendix~\ref{app:proofs}) uses only that conformal p-values lie on the lattice $\{k/(n_0+1)\}$. With $n_0=25$ and $\alpha=0.10$, BH must accept at least $38.5\%$ of the test set at once or nothing. The requirement $n_0\gtrsim1/(\alpha q)$ is perverse for verification: it is a lower bound on the number of calibration \emph{errors}, it grows as the target tightens, and a more accurate model both forces a tighter non-vacuous target and supplies fewer errors.
+
+\begin{proposition}[Validity by abstention]
+\label{prop:abstain}
+If a procedure is $(\alpha,\delta)$-valid and fires with probability $\pfire>0$, then
+\[
+P\big(\Rsel(\lamhat)>\alpha\ \big|\ \text{fire}\big)\ \le\ \min\{1,\ \delta/\pfire\},
+\]
+and for $\pfire\le\delta$ this is attained: there are $(\alpha,\delta)$-valid procedures whose every issued certificate is wrong.
+\end{proposition}
+
+\begin{proof}
+$\Rsel(\infty)=0$, so $\{\Rsel(\lamhat)>\alpha\}\subseteq\{\text{fire}\}$ and the bound follows on dividing by $\pfire$. For attainment take any distribution with $\pizero>\alpha$ and the procedure that ignores the data, accepts everything with probability $\pfire\le\delta$, and otherwise abstains.
+\end{proof}
+
+Proposition~\ref{prop:abstain} says nothing against validity: validity is a statement about the calibration draw, abstentions included, whereas an operator acts only on certificates that are issued. When $\pfire\le\delta$ the guarantee is compatible with every issued certificate being wrong, a second sense, beyond $\alpha\ge\pizero$, in which it can be vacuous. Whether a given certificate behaves badly when it fires is an empirical matter, addressed next.
+
+\section{ATTAINABILITY}
+\label{sec:attain}
+
+\paragraph{Data.} Seven models (Qwen3.5-0.8B/4B, Qwen3-1.7B/4B/8B, Qwen2.5-7B-Instruct, OLMo-3-7B) generate 2--4 traces per GSM8K test problem \citep{cobbe2021gsm8k} under a plain two-shot prompt: 295--1{,}387 usable traces over 167--395 problems per model, hence 67--158 calibration problems. Accuracy ranges from $0.33$ to $0.91$.
+
+\input{tables/tab_main}
+
+\paragraph{The boundary target.} Table~\ref{tab:main} reports the certificate at $\alpha=\pizero$ and at $0.75\pizero$. The boundary target sits at the edge of vacuity, so it is sensitive to the estimate that defines it: the training-partition $\pizero$ lies above the held-out base error by $0.01$--$0.04$ for three models, below it by $0.01$--$0.03$ for two, and within $0.005$ for two, and coverage at this target moves accordingly. Its value is diagnostic. Mean coverage conceals a bimodal outcome: the certificate either abstains or accepts a large set (32--86\% of test traces given firing), and $\pfire$ ranges from $0.02$ to $0.96$ across the 21 pairs. When the certificate fires, $\hat R$ is $0.53$--$1.07$ of the target; for weak signals it is close to $1$, since they fire on favourable calibration draws by accepting almost everything, which at the boundary is permitted and carries the base error rate. The probe covers more than confidence and more than the J-lens signal in all seven models (geometric-mean ratios $1.8$ and $3.3$; sign test $p=0.016$ for each, both significant under BH at 0.10 over the six secondary comparisons of this section and \S\ref{sec:shift}); in absolute terms its coverage exceeds confidence's by up to $0.33$ and the J-lens signal's by up to $0.55$. Confidence covers more than the J-lens signal in six of seven models (ratio $1.9$, $p=0.125$).
+
+\paragraph{Non-vacuous targets.} At $0.75\pizero$, which lies below the held-out base error in every cell, the picture is stark: $\pfire\le\delta$ for 15 of 21 pairs, mean coverage reaches $10\%$ for 2 of 21 (confidence and the probe on Qwen3.5-4B, $0.11$ and $0.39$), and the probe's advantage widens (ratios $3.1$ over confidence and $8.5$ over the J-lens signal). Over the whole grid of targets below the held-out base error (Appendix Table~\ref{tab:full}), $10\%$ coverage is reached by 3 of 21 pairs: the probe on Qwen3.5-4B and on Qwen3-1.7B, and confidence on Qwen3.5-4B. At $\alpha=0.05$ every signal has coverage below $0.1\%$, as Lemma~\ref{lem:floor} predicts: $a_0^\star=104$ error-free traces above the threshold exceeds five of the seven calibration sets and is two thirds of the largest.
+
+\paragraph{Conformal selection.} At level $\alpha=\pizero$ BH conformal selection makes no rejection in 74\% of replicates on average (Appendix Table~\ref{tab:bh}). The lattice minimum of Proposition~\ref{prop:lattice} ranges from 2\% of the test set (Qwen3.5-0.8B, with 108 calibration errors) to 69\% (Qwen3-4B), and for Qwen3-8B it exceeds the test set, so no rejection is possible. The condition also explains the one success: on Qwen3.5-0.8B, whose calibration sets contain 108 errors, BH rejects in 79--100\% of replicates. \citet{gui2024conformal} report useful power for conformal selection of LLM outputs with reference sets of a few hundred; Proposition~\ref{prop:lattice} makes precise that the binding quantity is the number of calibration nulls, which for a correctness verifier is the number of calibration \emph{errors}, 6--24 here for six of seven models.
+
+\subsection{Is Low Coverage the Bound's Fault?}
+\label{sec:tighter}
+
+No. For fixed $k$ the error count is binomial, a family with monotone likelihood ratio, so the binomial test behind the CP limit is uniformly most powerful among non-randomized tests at its size (Karlin--Rubin); Appendix Table~\ref{tab:bounds} confirms that neither a Hoeffding--Bentkus nor a betting bound exceeds CP in any of the 21 cells.
+
+What does cost coverage is the Bonferroni grid. A walk that tests every size at the full $\delta$, starts at the first size that passes and stops at the first subsequent failure raises mean coverage from $0.21$ to $0.43$, but has no validity proof, since its start is chosen by the data; the textbook fixed-sequence walk from the strictest threshold \citep{bauer1991multiple} never fires for $\alpha<1-\delta^{1/10}=0.21$, because ten error-free points certify nothing smaller (Lemma~\ref{lem:floor}). Section~\ref{sec:fs} resolves this.
+
+\subsection{Conditional Failure With Known Risk}
+\label{sec:synthetic}
+
+Real test sets are too small to tell whether a given issued certificate is wrong. We therefore simulate a Gaussian score model (incorrect scores $N(0,1)$, correct scores $N(\mu,1)$ with $\mu$ set by the AUC), where $\Rsel(\lambda)$ is known, at sizes matched to four of our cells, 20{,}000 calibration draws each (Appendix Table~\ref{tab:synthetic} and Figure~\ref{fig:abstention}). At $\alpha=0.75\pizero$ with $\pizero=0.16$, AUC $0.82$, $n=154$ (the Qwen3.5-4B probe regime), rule \eqref{eq:cert} fires in $56\%$ of draws and an issued certificate is wrong with probability $0.003$. At AUC $0.71$ and $\alpha=0.5\pizero$ it fires in $0.5\%$ of draws and is wrong in $52\%$ of them; at $\pizero=0.22$, AUC $0.76$, $n=78$ and the same target it fires in $0.4\%$ and is wrong in $69\%$. In every setting the unconditional failure probability is at most $0.003$, more than thirty times below $\delta$. The certificate is thus simultaneously very conservative in the sense it guarantees and unreliable in the sense an operator experiences, and the two are reconciled by abstention (Proposition~\ref{prop:abstain}).
+
+\subsection{Score Quality, Not Model Quality}
+\label{sec:auc}
+
+Since a non-vacuous $\alpha$ lies below $\pizero$, one might expect better models to be harder to certify. Across the seven models, coverage at $\alpha=\pizero$ instead tracks the score's test AUC (probe and confidence: Spearman $+0.79$, $p=0.036$) more than model accuracy ($-0.43$, $p=0.34$; $-0.39$, $p=0.38$). With seven models and accuracy confounded with AUC this is descriptive; the practical reading is that certification budgets should be planned from the verifier's AUC and Lemma~\ref{lem:floor}.
+
+\paragraph{Why the probe wins.} The probe's advantage could be information that the readable features cannot express, or better estimation of the same information. We reconstruct the probe score from the 119 readable features by a ridge regression fit on out-of-fold probe scores of the training problems, choose every regularization constant by grouped cross-validation on those problems, and evaluate on held-out problems (Appendix~\ref{app:recon}). The reconstruction has mean AUC $0.63$ across the seven models, no better than the readable logistic regression ($0.65$) and well below the probe ($0.75$); the residual, probe minus reconstruction, keeps AUC $0.66$ and exceeds $0.5$ on every model; and as a certificate signal the reconstruction buys the readable signals' coverage, not the probe's. The probe's edge is therefore not linearly expressible in the readable features, and the coverage gap is a price paid in information rather than a tuning artefact: cross-validating the readable scorers' regularization moves their AUC by $0.02$. (Regressing on in-sample probe scores instead gives residual AUC $0.54$; Appendix~\ref{app:recon} explains why.)
+
+\section{A FLOOR-STARTED FIXED-SEQUENCE CERTIFICATE}
+\label{sec:fs}
+
+Rule \eqref{eq:cert} pays for a Bonferroni split because its thresholds are order statistics of the calibration scores, so the hypotheses it tests are random. Learn-then-Test \citep{angelopoulos2021ltt} already contains the remedy for a fixed grid: fixed-sequence testing of the grid hypotheses controls the family-wise error with no split and no monotonicity requirement. Two choices separate that recipe from a usable verifier certificate. The thresholds must be fixed without calibration data, which we do from the training split; and the walk must begin where certification is possible at all, since sizes below the floor of Lemma~\ref{lem:floor} cannot certify and a walk that begins there stops at once. FS-floor is fixed-sequence Learn-then-Test with these two choices and a start constant $c$.
+
+\paragraph{Procedure (FS-floor).} Let $\lambda_1>\dots>\lambda_J$ be the $1-q_j$ quantiles of the scorer's \emph{training-split} scores for accept fractions $q_j\in\{0.02,0.04,\dots,1\}$. Let $j_0$ be the first $j$ with $q_j\,n\ge c\,a_0^\star(\alpha,\delta)$. For $j=j_0,j_0+1,\dots$ let $N_j$ and $E_j$ count calibration traces and errors with $s\ge\lambda_j$, and reject $H_j:\Rsel(\lambda_j)>\alpha$ when the exact binomial p-value $P\{\mathrm{Bin}(N_j,\alpha)\le E_j\}$ is at most $\delta$. Stop at the first non-rejection and return the last rejected $\lambda_j$, or abstain if there is none.
+
+\begin{proposition}
+\label{prop:fs}
+FS-floor is $(\alpha,\delta)$-valid for any score distribution.
+\end{proposition}
+
+\begin{proof}
+The grid, the order and $j_0$ depend only on the training split and $n$, so each $H_j$ is a fixed hypothesis, and given $N_j$, $E_j\sim\mathrm{Bin}(N_j,\Rsel(\lambda_j))$, so its p-value is valid. A false certification requires rejecting the first true $H_j$ in the order, which has probability at most $\delta$ \citep{bauer1991multiple}. No monotonicity of $\Rsel$ is used.
+\end{proof}
+
+\input{tables/tab_fs}
+
+\paragraph{Choosing $c$ and the grid.} The constant $c$ sets how far above the zero-error floor the walk begins. Starting at the floor itself ($c=1$) makes the first test intolerant of a single error, and on real data at $\alpha=\pizero$ that covers less than rule \eqref{eq:cert} ($0.13$ against $0.21$); starting too high skips thresholds that would have certified. We therefore choose $c\in\{1,1.5,2,3,4\}$ per cell \emph{before calibration}: we simulate the Gaussian score model of \S\ref{sec:synthetic} at the training split's out-of-fold AUC, its base error rate and $n$, and take the $c$ with the largest simulated coverage. The choice uses no calibration data, so Proposition~\ref{prop:fs} is untouched, and the Gaussian assumption affects only power. The grid is cross-fitted in the same spirit: its quantiles come from out-of-fold scores of the training problems, since in-sample scores are optimistic for the scorer. Appendix Table~\ref{tab:fsfull} and Figure~\ref{fig:attain} report every fixed $c$, the in-sample grid and the per-model curves.
+
+\paragraph{Results.} Table~\ref{tab:fs} compares FS-floor with rule \eqref{eq:cert}. In simulation the failure probability is at most $0.055$ against $\delta=0.10$ for every $c$ and setting. At the chosen $c$, coverage is $2.0$--$8.3\times$ that of rule \eqref{eq:cert} in the settings where the latter fires at all, and $\pfire$ rises from $0.11$ to $0.40$ in the AUC-$0.71$ regime; the probability that an issued certificate is wrong is $0.06$--$0.10$ in the three settings where $\pfire$ exceeds $0.4$ and grows as $\pfire$ falls, as Proposition~\ref{prop:abstain} predicts. On the real cells FS-floor covers more than rule \eqref{eq:cert} in all 21 pairs at all three targets. At $\alpha=0.75\pizero$ mean coverage rises from $0.051$ to $0.163$ and $\pfire$ from $0.10$ to $0.28$, the number of pairs with $\pfire\le\delta$ falls from 15 to 4, and 11 pairs reach $10\%$ coverage against 2; at $\alpha=\pizero$ coverage rises from $0.211$ to $0.390$ and all 21 pairs reach $10\%$ against 14. Conditional on firing, $\hat R/\alpha$ has median $0.80$ at $\alpha=\pizero$ and $0.94$ at $0.75\pizero$, against $0.76$ and $0.84$ for rule \eqref{eq:cert}: a procedure that abstains less certifies sets closer to the target, as it should. The floor remains binding. No non-randomized procedure on this statistic can certify with fewer than $a_0^\star(\alpha,\delta)$ accepted points, and mean coverage at the non-vacuous target $0.75\pizero$ stays at $0.16$. Figure~\ref{fig:budget} shows what larger budgets buy in the Gaussian model: at AUC $0.76$ the certificate fires in most draws from about 200 problems and covers more than half the traces from about 500, while at AUC $0.66$ even 3{,}000 problems certify fewer than half. FS-floor's advantage is concentrated below a few hundred problems, where the floor rather than the grid limits both procedures.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/fig_budget.pdf}
+\caption{Calibration budget curves in the Gaussian score model ($\pizero=0.16$, $\alpha=0.75\pizero$, $\delta=0.10$, 2{,}000 draws per point): firing probability and mean coverage of FS-floor ($c=2$, solid) and rule \eqref{eq:cert} (dashed) against the number of calibration problems, for four values of the verifier's AUC. Shaded: the budgets in this study.}
+\label{fig:budget}
+\end{figure}
+
+\section{SHIFT}
+\label{sec:shift}
+
+We freeze the GSM8K-trained scorer and the GSM8K-calibrated threshold ($\alpha=\pizero$ of GSM8K) and apply them to the same model's traces on ARC-Challenge \citep{clark2018arc}, StrategyQA \citep{geva2021strategyqa}, CommonsenseQA \citep{talmor2019commonsenseqa} and three BIG-Bench-Hard logic tasks \citep{suzgun2023bbh}: 72 (model, benchmark, signal) cells. Exchangeability fails by construction \citep{tibshirani2019covariate,barber2023beyond}; the question is how.
+
+Every one of the 72 cells fires in some replicates. In 40 of them $\hat R$ exceeds the target, by up to $0.28$, and the split is clean: the target is exceeded in 40 of the 45 cells where the new task is harder than the target and in none of the 27 where it is easier. The error among accepted traces is a median $0.94$ of the new task's base error, so off-distribution the accepted set is barely better than accepting everything; Appendix Figure~\ref{fig:shift} and Table~\ref{tab:shift} show every cell. Across cells $\hat R$ tracks the new task's base error (Spearman $0.88$; $0.96$ over the 63 cells with coverage above $2\%$), and the benefit that remains shrinks as the score's AUC drops (Spearman $0.42$ between $\hat R$/base error and AUC drop; all $p<10^{-3}$). Cells are clustered within models, so these $p$-values are nominal.
+
+\section{SELECTION PRESSURE}
+\label{sec:pressure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/fig_pressure.pdf}
+\caption{Best-of-$n$ selection against each verifier signal. \emph{Certificate panels}: error among accepted BoN-selected test traces, pooled over firing replicates, relative to $\alpha=\pizero$; thresholds calibrated on unpressured traces. Signals that fire in fewer than 2\% of 1{,}000 replicates are omitted. \emph{Accuracy panels}: change in accuracy of the selected trace relative to $n=1$, with 95\% bootstrap bands over problems.}
+\label{fig:pressure}
+\end{figure*}
+
+
+A deployed verifier is an optimization target: candidates are sampled and the top-scoring one is kept. Marginal conformal guarantees can fail under data-driven selection \citep{jin2025focal}, and proxy scores are overoptimized by best-of-$n$ (BoN) \citep{gao2023scaling}. We measure the dose-response for verifier certificates.
+
+\paragraph{Design.} For Qwen3.5-4B and Qwen3-4B we sample up to 64 traces per problem on GSM8K problems unused elsewhere in this paper, so the frozen scorers have never seen them; 149 and 243 problems retain at least 32 usable traces, and analyses use 32 per problem. Pressure runs over $n\in\{1,2,4,\dots,32\}$, up to $\log n-(n-1)/n=2.5$ nats from the base policy \citep{beirami2024bon}. In the \emph{naive arm} the threshold is calibrated on unpressured traces from half of the problems and applied to BoN-selected traces of the other half. The target is the model's GSM8K training-partition base error from \S\ref{sec:attain} ($0.16$ and $0.10$), fixed before any pressure problem was drawn; the sample base errors of the pressure problems are $0.20$ and $0.11$, so both targets are non-vacuous there. In the \emph{corrected arm} calibration traces are selected by the same BoN rule, restoring exchangeability conditional on selection \citep{jin2025focal}. We use 1{,}000 resplits. Accuracy of the selected trace is computed exactly from the cached samples (Appendix~\ref{app:signals}).
+
+\paragraph{Error among accepted rises with $n$.} Calibration sets here are 74 and 122 problems, half of the pressure problems, and the targets are non-vacuous, so $\pfire$ is low: $0.14$ for the probe and $0.03$ for confidence on Qwen3.5-4B, $0.09$ and $0.05$ for confidence and the probe on Qwen3-4B, and at most $0.02$ otherwise. It does not depend on $n$, since calibration is unpressured. Conditional on firing (Figure~\ref{fig:pressure}; Appendix Table~\ref{tab:bon} and Figure~\ref{fig:corrected}), $\hat R/\alpha$ rises from $0.87$ to $1.52$ for the probe and from $0.78$ to $1.12$ for confidence on Qwen3-4B, and from $0.92$ to $1.25$ for confidence on Qwen3.5-4B. The exception is the probe on Qwen3.5-4B ($0.70\to0.69$), the one pair for which BoN improves the policy monotonically. The naive arm breaks exchangeability between calibration and deployment, so Proposition~\ref{prop:valid} promises nothing for it; what happens empirically is that the fraction of replicates whose test error among accepted exceeds $\alpha$ stays below $\delta$ in every cell (at most $0.056$), because most replicates accept nothing.
+
+\paragraph{Overoptimization.} The accuracy of the BoN-selected trace (Figure~\ref{fig:pressure}, accuracy panels) peaks at small $n$ and then falls for several signals. On Qwen3-4B the probe loses $3.3$ points from its peak at $n=2$ and confidence $1.8$ from $n=4$; on Qwen3.5-4B the surface signal loses $5.7$ and the logit lens $2.6$, while the probe gains $7.7$ monotonically. No signal is uniformly safe; bootstrap bands are wide and we make no confirmatory claim about the ranking. The structural point stands regardless: a bound on error among accepted traces, calibrated before optimization, does not indicate whether selecting on the score still improves the policy.
+
+\paragraph{The correction costs coverage.} Selection-conditional calibration restores the exchangeability that Proposition~\ref{prop:valid} needs, so the corrected arm is valid at every $n$ by construction, but at $n=32$ mean coverage falls from $0.05$ to $0.005$ (confidence) and from $0.03$ to $0$ (probe) on Qwen3-4B, and from $0.02$ to $0.002$ for confidence on Qwen3.5-4B. Only the strongest scorer benefits (probe on Qwen3.5-4B, $0.09\to0.22$): BoN has lowered that policy's error to $0.12$, below the target of $0.16$, so a larger share of the pressured population is certifiable.
+
+\section{RELATED WORK}
+
+\paragraph{Distribution-free selection and risk control.} Selective classification with binomial certificates goes back to \citet{elyaniv2010foundations} and \citet{geifman2017selective}; RCPS \citep{bates2021rcps}, Learn-then-Test \citep{angelopoulos2021ltt} and conformal risk control \citep{angelopoulos2024crc} generalize the risk and the search. Conformal p-values with BH give FDR-controlled selection \citep{bates2023outliers,jin2023selection}, applied to foundation-model outputs by \citet{gui2024conformal} and to factuality and generation \citep{mohri2024factuality,quach2024conformal}. These works establish validity and show power at moderate to large calibration sizes; we characterize the small-budget regime and give a certificate that starts at the floor.
+
+\paragraph{Verifier signals.} Confidence \citep{kadavath2022know}, hidden-state probes \citep{azaria2023internal,burns2023discovering,zhang2025reasoning}, learned verifiers \citep{cobbe2021gsm8k,lightman2024verify} and lens readouts \citep{nostalgebraist2020logit,belrose2023tuned,gurnee2026workspace} are evaluated by ranking metrics. Written CoT can be unfaithful \citep{turpin2023unfaithful} and proposals to monitor it are active \citep{korbak2025monitorability,baker2025monitoring}; our results price readability in deployment terms.
+
+\paragraph{Overoptimization.} \citet{gao2023scaling} characterize BoN and RL overoptimization of preference reward models against a gold reward model; ensembles mitigate but do not remove it \citep{coste2024ensembles,eisenstein2023herding}. We study correctness verifiers with exact labels and ask what happens to a certificate; \citet{jin2025focal} prove that selection breaks marginal conformal coverage and give a correction, whose coverage cost at small budgets we measure.
+
+\section{LIMITATIONS AND DISCUSSION}
+
+All models are open-weight decoders of at most 8B parameters; certification is on GSM8K with one prompt format and temperature $0.8$. Lemma~\ref{lem:floor} and Figure~\ref{fig:budget} state what more labels would buy. Replicate-based uncertainty reflects resplitting and trace redraws on a fixed problem sample; cross-model consistency carries the evidential weight. Pressure experiments cover two models and BoN up to $n=32$. The guarantee covers single sampled traces, not the multi-sample sets a deployed system draws. The probe reconstruction is linear, so a non-linear readable reconstruction could narrow the gap.
+
+We draw four practical conclusions. Report $\pfire$ next to coverage, and treat $(\alpha,\delta)$-validity as uninformative about issued certificates when $\pfire\le\delta$. Fix thresholds before calibration and start testing at the floor. Budget calibration labels from Lemma~\ref{lem:floor} and the verifier's AUC before collecting them; accepted traces are only a fraction of the labelled ones. Do not read a valid certificate as evidence that the verifier is safe to optimize against or to move to a new task: in our data the error among accepted traces followed the task and the optimizer, not the certificate.
+
+\subsection*{AI use statement}
+
+We used a large language model coding assistant throughout this work. It helped write and debug the analysis code, draft and edit the text and figures, and refine the experimental design, hypotheses, proofs of the statements in Section~\ref{sec:theory}, data processing and interpretation of results. The research questions, design decisions and claims are the authors'; we checked every script and every line of the paper, all tables and figures are regenerated from the released result files by script, and we take responsibility for the final content.
+
+\bibliography{refs}
+
+\input{checklist}
+
+\clearpage
+\appendix
+\thispagestyle{empty}
+\onecolumn
+\aistatstitle{Certified by Abstention:\\ Supplementary Materials}
+
+\input{appendix}
+
+\end{document}

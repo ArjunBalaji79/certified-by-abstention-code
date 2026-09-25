@@ -1,0 +1,219 @@
+{
+ "nonvacuous_cov_ge_10pct": [
+  [
+   "qwen3-1.7b|rho=1.0",
+   "probe",
+   0.2123
+  ],
+  [
+   "qwen3-1.7b|abs=0.2",
+   "probe",
+   0.1311
+  ],
+  [
+   "qwen3.5-0.8b|rho=1.0",
+   "confidence",
+   0.2177
+  ],
+  [
+   "qwen3.5-0.8b|rho=1.0",
+   "probe",
+   0.4888
+  ],
+  [
+   "qwen3.5-4b|rho=0.75",
+   "confidence",
+   0.1127
+  ],
+  [
+   "qwen3.5-4b|rho=0.75",
+   "probe",
+   0.3901
+  ],
+  [
+   "qwen3.5-4b|abs=0.1",
+   "probe",
+   0.1521
+  ]
+ ],
+ "pairs_attaining": [
+  [
+   "qwen3-1.7b",
+   "probe"
+  ],
+  [
+   "qwen3.5-0.8b",
+   "confidence"
+  ],
+  [
+   "qwen3.5-0.8b",
+   "probe"
+  ],
+  [
+   "qwen3.5-4b",
+   "confidence"
+  ],
+  [
+   "qwen3.5-4b",
+   "probe"
+  ]
+ ],
+ "pfire_le_delta_rho=1.0": 4,
+ "pfire_le_delta_rho=0.75": 15,
+ "spearman_cov_auc_probe": [
+  0.7857,
+  0.0362
+ ],
+ "spearman_cov_acc_probe": [
+  -0.4286,
+  0.3374
+ ],
+ "spearman_cov_auc_confidence": [
+  0.7857,
+  0.0362
+ ],
+ "spearman_cov_acc_confidence": [
+  -0.3929,
+  0.3833
+ ],
+ "pooled_ratio_rho1": {
+  "qwen3.5-0.8b|confidence": 0.826,
+  "qwen3.5-0.8b|jspace": 0.907,
+  "qwen3.5-0.8b|probe": 0.79,
+  "qwen3.5-4b|confidence": 0.627,
+  "qwen3.5-4b|jspace": 0.794,
+  "qwen3.5-4b|probe": 0.527,
+  "olmo-3-7b|confidence": 0.666,
+  "olmo-3-7b|jspace": 0.896,
+  "olmo-3-7b|probe": 0.678,
+  "qwen3-1.7b|confidence": 0.916,
+  "qwen3-1.7b|jspace": 1.067,
+  "qwen3-1.7b|probe": 0.721,
+  "qwen2.5-7b-it|confidence": 0.764,
+  "qwen2.5-7b-it|jspace": 0.734,
+  "qwen2.5-7b-it|probe": 0.683,
+  "qwen3-4b|confidence": 0.803,
+  "qwen3-4b|jspace": 0.849,
+  "qwen3-4b|probe": 0.682,
+  "qwen3-8b|confidence": 1.223,
+  "qwen3-8b|probe": 0.93
+ },
+ "pooled_ratio_rho1_range": [
+  0.527,
+  1.223
+ ],
+ "gm_probe_over_jspace": [
+  3.318,
+  7
+ ],
+ "gm_jspace_over_conf": [
+  0.537,
+  1
+ ],
+ "boundary_variant_cov_absdiff_mean_max": [
+  0.0038,
+  0.1483
+ ],
+ "bh_frac_no_rejection_rho1_mean": 0.699,
+ "bh_frac_no_rejection_rho1_mean_all7": 0.742,
+ "floor_qwen3_8b": 58,
+ "traces": {
+  "gsm8k": 5337,
+  "other_benchmarks_all_cells": 6428,
+  "bon": 24793,
+  "total": 36558
+ },
+ "cov_given_fire_range_rho1": [
+  0.3193,
+  0.8602
+ ],
+ "spearman_rho=1.0_probe": {
+  "auc": [
+   0.786,
+   0.036
+  ],
+  "acc": [
+   -0.429,
+   0.337
+  ]
+ },
+ "spearman_rho=1.0_confidence": {
+  "auc": [
+   0.786,
+   0.036
+  ],
+  "acc": [
+   -0.393,
+   0.383
+  ]
+ },
+ "spearman_rho=0.75_probe": {
+  "auc": [
+   0.714,
+   0.071
+  ],
+  "acc": [
+   -0.25,
+   0.589
+  ]
+ },
+ "spearman_rho=0.75_confidence": {
+  "auc": [
+   0.536,
+   0.215
+  ],
+  "acc": [
+   -0.036,
+   0.939
+  ]
+ },
+ "pooled_ratio_rho1_ge50": [
+  0.527,
+  1.067,
+  19
+ ],
+ "vacuous_by_noise_rho1": [
+  "qwen3.5-4b",
+  "olmo-3-7b",
+  "qwen2.5-7b-it",
+  "qwen3-4b",
+  "qwen3-8b"
+ ],
+ "nonvac_strict_hits": [
+  [
+   "qwen3-1.7b|abs=0.2",
+   "probe",
+   0.1311
+  ],
+  [
+   "qwen3.5-4b|rho=0.75",
+   "confidence",
+   0.1127
+  ],
+  [
+   "qwen3.5-4b|rho=0.75",
+   "probe",
+   0.3901
+  ],
+  [
+   "qwen3.5-4b|abs=0.1",
+   "probe",
+   0.1521
+  ]
+ ],
+ "rho075_ge10": 2,
+ "rho075_gm": {
+  "probe/jspace": [
+   8.53,
+   7
+  ],
+  "probe/confidence": [
+   3.12,
+   6
+  ],
+  "confidence/jspace": [
+   2.73,
+   6
+  ]
+ }
+}

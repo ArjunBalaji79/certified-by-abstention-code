@@ -1,0 +1,2415 @@
+{
+  "olmo-3-7b|arc": {
+    "slug": "olmo-3-7b",
+    "benchmark": "arc",
+    "root": "v3/olmo-3-7b/",
+    "generated_at": "2026-07-29T08:37:42Z",
+    "n_analyzed": 166,
+    "n_correct": 123,
+    "n_incorrect": 43,
+    "accuracy": 0.741,
+    "aucs": {
+      "length_only": {
+        "auc": 0.4129,
+        "ci95": [
+          0.3103,
+          0.5165
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.409,
+        "ci95": [
+          0.2983,
+          0.532
+        ]
+      },
+      "surface_only": {
+        "auc": 0.4335,
+        "ci95": [
+          0.3298,
+          0.5414
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.487,
+        "ci95": [
+          0.3919,
+          0.5867
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.5245,
+        "ci95": [
+          0.4285,
+          0.6176
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5099,
+        "ci95": [
+          0.4121,
+          0.6148
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.5319,
+        "ci95": [
+          0.4323,
+          0.6318
+        ]
+      },
+      "all_combined": {
+        "auc": 0.4895,
+        "ci95": [
+          0.3768,
+          0.5941
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.4748,
+        "ci95": [
+          0.3652,
+          0.5847
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": 0.1155,
+        "ci95": [
+          -0.0325,
+          0.254
+        ],
+        "p_two_sided": 0.128
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0374,
+        "ci95": [
+          -0.0748,
+          0.1537
+        ],
+        "p_two_sided": 0.52
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0909,
+        "ci95": [
+          -0.0366,
+          0.227
+        ],
+        "p_two_sided": 0.19
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.1229,
+        "ci95": [
+          -0.0091,
+          0.2516
+        ],
+        "p_two_sided": 0.072
+      },
+      "probe_vs_jspace": {
+        "delta": -0.0497,
+        "ci95": [
+          -0.1869,
+          0.079
+        ],
+        "p_two_sided": 0.486
+      },
+      "probe_vs_confidence": {
+        "delta": 0.0658,
+        "ci95": [
+          -0.0687,
+          0.2052
+        ],
+        "p_two_sided": 0.332
+      }
+    },
+    "shuffled_label_auc": 0.5946,
+    "have_probe": true
+  },
+  "olmo-3-7b|bbhlogic": {
+    "slug": "olmo-3-7b",
+    "benchmark": "bbhlogic",
+    "root": "v3/olmo-3-7b/",
+    "generated_at": "2026-07-29T08:36:05Z",
+    "n_analyzed": 153,
+    "n_correct": 56,
+    "n_incorrect": 97,
+    "accuracy": 0.366,
+    "aucs": {
+      "length_only": {
+        "auc": 0.4766,
+        "ci95": [
+          0.3756,
+          0.5724
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.525,
+        "ci95": [
+          0.4326,
+          0.6146
+        ]
+      },
+      "surface_only": {
+        "auc": 0.472,
+        "ci95": [
+          0.3691,
+          0.5776
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.597,
+        "ci95": [
+          0.4926,
+          0.6912
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.458,
+        "ci95": [
+          0.3627,
+          0.5486
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.3275,
+        "ci95": [
+          0.24,
+          0.4272
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.4742,
+        "ci95": [
+          0.3714,
+          0.5635
+        ]
+      },
+      "all_combined": {
+        "auc": 0.5501,
+        "ci95": [
+          0.4513,
+          0.6517
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.4965,
+        "ci95": [
+          0.4063,
+          0.5916
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.067,
+        "ci95": [
+          -0.195,
+          0.0576
+        ],
+        "p_two_sided": 0.302
+      },
+      "jspace_vs_logitlens": {
+        "delta": -0.139,
+        "ci95": [
+          -0.2432,
+          -0.026
+        ],
+        "p_two_sided": 0.014
+      },
+      "jspace_vs_surface": {
+        "delta": -0.014,
+        "ci95": [
+          -0.1767,
+          0.1358
+        ],
+        "p_two_sided": 0.86
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": -0.0508,
+        "ci95": [
+          -0.1714,
+          0.0674
+        ],
+        "p_two_sided": 0.382
+      },
+      "probe_vs_jspace": {
+        "delta": 0.0385,
+        "ci95": [
+          -0.0838,
+          0.168
+        ],
+        "p_two_sided": 0.52
+      },
+      "probe_vs_confidence": {
+        "delta": -0.0285,
+        "ci95": [
+          -0.1463,
+          0.0897
+        ],
+        "p_two_sided": 0.624
+      }
+    },
+    "shuffled_label_auc": 0.3923,
+    "have_probe": true
+  },
+  "olmo-3-7b|gsm8k": {
+    "slug": "olmo-3-7b",
+    "benchmark": "gsm8k",
+    "root": "v3/olmo-3-7b/",
+    "generated_at": "2026-07-29T08:21:22Z",
+    "n_analyzed": 295,
+    "n_correct": 194,
+    "n_incorrect": 101,
+    "accuracy": 0.6576,
+    "aucs": {
+      "length_only": {
+        "auc": 0.6949,
+        "ci95": [
+          0.6266,
+          0.7657
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.7481,
+        "ci95": [
+          0.6802,
+          0.8168
+        ]
+      },
+      "surface_only": {
+        "auc": 0.613,
+        "ci95": [
+          0.5394,
+          0.6887
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.5945,
+        "ci95": [
+          0.5255,
+          0.6674
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.6419,
+        "ci95": [
+          0.5732,
+          0.7179
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5938,
+        "ci95": [
+          0.5164,
+          0.667
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.6618,
+        "ci95": [
+          0.5897,
+          0.737
+        ]
+      },
+      "all_combined": {
+        "auc": 0.6386,
+        "ci95": [
+          0.5698,
+          0.7126
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.7699,
+        "ci95": [
+          0.7102,
+          0.8299
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.1062,
+        "ci95": [
+          -0.1724,
+          -0.0432
+        ],
+        "p_two_sided": 0.0
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0474,
+        "ci95": [
+          -0.0321,
+          0.1418
+        ],
+        "p_two_sided": 0.242
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0289,
+        "ci95": [
+          -0.0596,
+          0.126
+        ],
+        "p_two_sided": 0.56
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": -0.0863,
+        "ci95": [
+          -0.1413,
+          -0.0339
+        ],
+        "p_two_sided": 0.0
+      },
+      "probe_vs_jspace": {
+        "delta": 0.1279,
+        "ci95": [
+          0.0493,
+          0.2086
+        ],
+        "p_two_sided": 0.002
+      },
+      "probe_vs_confidence": {
+        "delta": 0.0217,
+        "ci95": [
+          -0.0469,
+          0.09
+        ],
+        "p_two_sided": 0.6
+      }
+    },
+    "shuffled_label_auc": 0.5274,
+    "have_probe": true
+  },
+  "qwen2.5-7b-it|arc": {
+    "slug": "qwen2.5-7b-it",
+    "benchmark": "arc",
+    "root": "v3/qwen2.5-7b-it/",
+    "generated_at": "2026-07-29T09:04:58Z",
+    "n_analyzed": 209,
+    "n_correct": 185,
+    "n_incorrect": 24,
+    "accuracy": 0.8852,
+    "aucs": {
+      "length_only": {
+        "auc": 0.2761,
+        "ci95": [
+          0.1851,
+          0.3964
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.3887,
+        "ci95": [
+          0.2559,
+          0.5562
+        ]
+      },
+      "surface_only": {
+        "auc": 0.4917,
+        "ci95": [
+          0.3538,
+          0.6379
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.4935,
+        "ci95": [
+          0.3694,
+          0.6349
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.5507,
+        "ci95": [
+          0.4309,
+          0.6613
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.4052,
+        "ci95": [
+          0.3056,
+          0.515
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.5358,
+        "ci95": [
+          0.4097,
+          0.6609
+        ]
+      },
+      "all_combined": {
+        "auc": 0.5221,
+        "ci95": [
+          0.3987,
+          0.651
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.518,
+        "ci95": [
+          0.3933,
+          0.6369
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": 0.1619,
+        "ci95": [
+          -0.0101,
+          0.324
+        ],
+        "p_two_sided": 0.068
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0572,
+        "ci95": [
+          -0.0747,
+          0.1733
+        ],
+        "p_two_sided": 0.414
+      },
+      "jspace_vs_surface": {
+        "delta": 0.059,
+        "ci95": [
+          -0.1318,
+          0.2445
+        ],
+        "p_two_sided": 0.584
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.1471,
+        "ci95": [
+          -0.0089,
+          0.2914
+        ],
+        "p_two_sided": 0.064
+      },
+      "probe_vs_jspace": {
+        "delta": -0.0327,
+        "ci95": [
+          -0.192,
+          0.1257
+        ],
+        "p_two_sided": 0.682
+      },
+      "probe_vs_confidence": {
+        "delta": 0.1293,
+        "ci95": [
+          -0.061,
+          0.2871
+        ],
+        "p_two_sided": 0.17
+      }
+    },
+    "shuffled_label_auc": 0.3597,
+    "have_probe": true
+  },
+  "qwen2.5-7b-it|bbhlogic": {
+    "slug": "qwen2.5-7b-it",
+    "benchmark": "bbhlogic",
+    "root": "v3/qwen2.5-7b-it/",
+    "generated_at": "2026-07-29T08:56:29Z",
+    "n_analyzed": 361,
+    "n_correct": 213,
+    "n_incorrect": 148,
+    "accuracy": 0.59,
+    "aucs": {
+      "length_only": {
+        "auc": 0.5289,
+        "ci95": [
+          0.4752,
+          0.5819
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.5777,
+        "ci95": [
+          0.5153,
+          0.6378
+        ]
+      },
+      "surface_only": {
+        "auc": 0.594,
+        "ci95": [
+          0.5368,
+          0.6481
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.5899,
+        "ci95": [
+          0.5285,
+          0.6477
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.5552,
+        "ci95": [
+          0.4953,
+          0.6165
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5604,
+        "ci95": [
+          0.5016,
+          0.6202
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.5325,
+        "ci95": [
+          0.4734,
+          0.5936
+        ]
+      },
+      "all_combined": {
+        "auc": 0.5917,
+        "ci95": [
+          0.5318,
+          0.6524
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.5859,
+        "ci95": [
+          0.5223,
+          0.6459
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.0225,
+        "ci95": [
+          -0.0901,
+          0.042
+        ],
+        "p_two_sided": 0.504
+      },
+      "jspace_vs_logitlens": {
+        "delta": -0.0347,
+        "ci95": [
+          -0.1072,
+          0.0343
+        ],
+        "p_two_sided": 0.344
+      },
+      "jspace_vs_surface": {
+        "delta": -0.0388,
+        "ci95": [
+          -0.1035,
+          0.0236
+        ],
+        "p_two_sided": 0.232
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": -0.0451,
+        "ci95": [
+          -0.1184,
+          0.019
+        ],
+        "p_two_sided": 0.172
+      },
+      "probe_vs_jspace": {
+        "delta": 0.0307,
+        "ci95": [
+          -0.0425,
+          0.1061
+        ],
+        "p_two_sided": 0.426
+      },
+      "probe_vs_confidence": {
+        "delta": 0.0082,
+        "ci95": [
+          -0.0555,
+          0.0767
+        ],
+        "p_two_sided": 0.774
+      }
+    },
+    "shuffled_label_auc": 0.5249,
+    "have_probe": true
+  },
+  "qwen2.5-7b-it|gsm8k": {
+    "slug": "qwen2.5-7b-it",
+    "benchmark": "gsm8k",
+    "root": "v3/qwen2.5-7b-it/",
+    "generated_at": "2026-07-29T08:39:17Z",
+    "n_analyzed": 323,
+    "n_correct": 261,
+    "n_incorrect": 62,
+    "accuracy": 0.808,
+    "aucs": {
+      "length_only": {
+        "auc": 0.5628,
+        "ci95": [
+          0.481,
+          0.6381
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.5837,
+        "ci95": [
+          0.4958,
+          0.6627
+        ]
+      },
+      "surface_only": {
+        "auc": 0.6018,
+        "ci95": [
+          0.5107,
+          0.6892
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.5221,
+        "ci95": [
+          0.4388,
+          0.6065
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.6481,
+        "ci95": [
+          0.5751,
+          0.717
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.559,
+        "ci95": [
+          0.4639,
+          0.6513
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.6683,
+        "ci95": [
+          0.5916,
+          0.7407
+        ]
+      },
+      "all_combined": {
+        "auc": 0.6965,
+        "ci95": [
+          0.6253,
+          0.7651
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.6683,
+        "ci95": [
+          0.5818,
+          0.7517
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": 0.0645,
+        "ci95": [
+          -0.0397,
+          0.1701
+        ],
+        "p_two_sided": 0.192
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.126,
+        "ci95": [
+          0.024,
+          0.2355
+        ],
+        "p_two_sided": 0.01
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0463,
+        "ci95": [
+          -0.0741,
+          0.17
+        ],
+        "p_two_sided": 0.454
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0846,
+        "ci95": [
+          0.0044,
+          0.164
+        ],
+        "p_two_sided": 0.034
+      },
+      "probe_vs_jspace": {
+        "delta": 0.0202,
+        "ci95": [
+          -0.0895,
+          0.1269
+        ],
+        "p_two_sided": 0.672
+      },
+      "probe_vs_confidence": {
+        "delta": 0.0847,
+        "ci95": [
+          -0.0226,
+          0.1919
+        ],
+        "p_two_sided": 0.106
+      }
+    },
+    "shuffled_label_auc": 0.547,
+    "have_probe": true
+  },
+  "qwen2.5-7b-it|strategyqa": {
+    "slug": "qwen2.5-7b-it",
+    "benchmark": "strategyqa",
+    "root": "v3/qwen2.5-7b-it/",
+    "generated_at": "2026-07-29T09:01:38Z",
+    "n_analyzed": 335,
+    "n_correct": 244,
+    "n_incorrect": 91,
+    "accuracy": 0.7284,
+    "aucs": {
+      "length_only": {
+        "auc": 0.5656,
+        "ci95": [
+          0.4864,
+          0.6375
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.6228,
+        "ci95": [
+          0.5528,
+          0.6972
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5471,
+        "ci95": [
+          0.468,
+          0.6221
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.5235,
+        "ci95": [
+          0.4453,
+          0.6035
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.485,
+        "ci95": [
+          0.4228,
+          0.5515
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.436,
+        "ci95": [
+          0.3611,
+          0.5218
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.5432,
+        "ci95": [
+          0.4733,
+          0.6198
+        ]
+      },
+      "all_combined": {
+        "auc": 0.5465,
+        "ci95": [
+          0.4711,
+          0.6219
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.633,
+        "ci95": [
+          0.5468,
+          0.7162
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.1378,
+        "ci95": [
+          -0.236,
+          -0.0531
+        ],
+        "p_two_sided": 0.002
+      },
+      "jspace_vs_logitlens": {
+        "delta": -0.0385,
+        "ci95": [
+          -0.1335,
+          0.0566
+        ],
+        "p_two_sided": 0.42
+      },
+      "jspace_vs_surface": {
+        "delta": -0.0621,
+        "ci95": [
+          -0.1592,
+          0.0312
+        ],
+        "p_two_sided": 0.202
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": -0.0796,
+        "ci95": [
+          -0.1585,
+          -0.0049
+        ],
+        "p_two_sided": 0.04
+      },
+      "probe_vs_jspace": {
+        "delta": 0.148,
+        "ci95": [
+          0.0529,
+          0.241
+        ],
+        "p_two_sided": 0.004
+      },
+      "probe_vs_confidence": {
+        "delta": 0.0102,
+        "ci95": [
+          -0.0805,
+          0.0972
+        ],
+        "p_two_sided": 0.83
+      }
+    },
+    "shuffled_label_auc": 0.5275,
+    "have_probe": true
+  },
+  "qwen3-4b|arc": {
+    "slug": "qwen3-4b",
+    "benchmark": "arc",
+    "root": "v3/qwen3-4b/",
+    "generated_at": "2026-07-29T08:19:33Z",
+    "n_analyzed": 287,
+    "n_correct": 244,
+    "n_incorrect": 43,
+    "accuracy": 0.8502,
+    "aucs": {
+      "length_only": {
+        "auc": 0.669,
+        "ci95": [
+          0.5472,
+          0.7707
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.7632,
+        "ci95": [
+          0.6698,
+          0.8372
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5796,
+        "ci95": [
+          0.4591,
+          0.6991
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.4845,
+        "ci95": [
+          0.3853,
+          0.5844
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.527,
+        "ci95": [
+          0.4145,
+          0.628
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5588,
+        "ci95": [
+          0.4574,
+          0.6586
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.61,
+        "ci95": [
+          0.4959,
+          0.7094
+        ]
+      },
+      "all_combined": {
+        "auc": 0.5648,
+        "ci95": [
+          0.4635,
+          0.6569
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.5986,
+        "ci95": [
+          0.4749,
+          0.7064
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.2363,
+        "ci95": [
+          -0.3475,
+          -0.1145
+        ],
+        "p_two_sided": 0.0
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0425,
+        "ci95": [
+          -0.0949,
+          0.1693
+        ],
+        "p_two_sided": 0.574
+      },
+      "jspace_vs_surface": {
+        "delta": -0.0526,
+        "ci95": [
+          -0.2041,
+          0.0805
+        ],
+        "p_two_sided": 0.414
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": -0.1533,
+        "ci95": [
+          -0.2543,
+          -0.049
+        ],
+        "p_two_sided": 0.002
+      },
+      "probe_vs_jspace": {
+        "delta": 0.0716,
+        "ci95": [
+          -0.0699,
+          0.2074
+        ],
+        "p_two_sided": 0.296
+      },
+      "probe_vs_confidence": {
+        "delta": -0.1647,
+        "ci95": [
+          -0.2727,
+          -0.0556
+        ],
+        "p_two_sided": 0.004
+      }
+    },
+    "shuffled_label_auc": 0.6051,
+    "have_probe": true
+  },
+  "qwen3-4b|bbhlogic": {
+    "slug": "qwen3-4b",
+    "benchmark": "bbhlogic",
+    "root": "v3/qwen3-4b/",
+    "generated_at": "2026-07-29T08:15:50Z",
+    "n_analyzed": 337,
+    "n_correct": 276,
+    "n_incorrect": 61,
+    "accuracy": 0.819,
+    "aucs": {
+      "length_only": {
+        "auc": 0.535,
+        "ci95": [
+          0.4425,
+          0.6231
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.5799,
+        "ci95": [
+          0.4905,
+          0.6578
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5429,
+        "ci95": [
+          0.4505,
+          0.6284
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.6282,
+        "ci95": [
+          0.5461,
+          0.7086
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.6025,
+        "ci95": [
+          0.5232,
+          0.6844
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.529,
+        "ci95": [
+          0.4325,
+          0.6228
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.6099,
+        "ci95": [
+          0.5306,
+          0.6874
+        ]
+      },
+      "all_combined": {
+        "auc": 0.6123,
+        "ci95": [
+          0.5266,
+          0.7011
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.7519,
+        "ci95": [
+          0.6768,
+          0.818
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": 0.0225,
+        "ci95": [
+          -0.0986,
+          0.1483
+        ],
+        "p_two_sided": 0.68
+      },
+      "jspace_vs_logitlens": {
+        "delta": -0.0257,
+        "ci95": [
+          -0.1215,
+          0.072
+        ],
+        "p_two_sided": 0.574
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0595,
+        "ci95": [
+          -0.0261,
+          0.1464
+        ],
+        "p_two_sided": 0.186
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0299,
+        "ci95": [
+          -0.0883,
+          0.1458
+        ],
+        "p_two_sided": 0.606
+      },
+      "probe_vs_jspace": {
+        "delta": 0.1495,
+        "ci95": [
+          0.0735,
+          0.2182
+        ],
+        "p_two_sided": 0.0
+      },
+      "probe_vs_confidence": {
+        "delta": 0.172,
+        "ci95": [
+          0.0516,
+          0.2802
+        ],
+        "p_two_sided": 0.002
+      }
+    },
+    "shuffled_label_auc": 0.5734,
+    "have_probe": true
+  },
+  "qwen3-4b|gsm8k": {
+    "slug": "qwen3-4b",
+    "benchmark": "gsm8k",
+    "root": "v2/qwen3-4b/",
+    "generated_at": "2026-07-29T07:06:40Z",
+    "n_analyzed": 1387,
+    "n_correct": 1258,
+    "n_incorrect": 129,
+    "accuracy": 0.907,
+    "aucs": {
+      "length_only": {
+        "auc": 0.583,
+        "ci95": [
+          0.4969,
+          0.6659
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.6098,
+        "ci95": [
+          0.5255,
+          0.6882
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5491,
+        "ci95": [
+          0.4841,
+          0.6146
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.5509,
+        "ci95": [
+          0.4807,
+          0.6243
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.6065,
+        "ci95": [
+          0.5211,
+          0.6791
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.625,
+        "ci95": [
+          0.5427,
+          0.7092
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.6279,
+        "ci95": [
+          0.5426,
+          0.7068
+        ]
+      },
+      "all_combined": {
+        "auc": 0.6062,
+        "ci95": [
+          0.5336,
+          0.6749
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.7506,
+        "ci95": [
+          0.6814,
+          0.8151
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.0034,
+        "ci95": [
+          -0.0795,
+          0.0719
+        ],
+        "p_two_sided": 0.948
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0555,
+        "ci95": [
+          -0.0425,
+          0.1519
+        ],
+        "p_two_sided": 0.254
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0574,
+        "ci95": [
+          -0.0353,
+          0.142
+        ],
+        "p_two_sided": 0.222
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0181,
+        "ci95": [
+          -0.0523,
+          0.0835
+        ],
+        "p_two_sided": 0.584
+      },
+      "probe_vs_jspace": {
+        "delta": 0.1441,
+        "ci95": [
+          0.0777,
+          0.2161
+        ],
+        "p_two_sided": 0.0
+      },
+      "probe_vs_confidence": {
+        "delta": 0.1408,
+        "ci95": [
+          0.0513,
+          0.23
+        ],
+        "p_two_sided": 0.0
+      }
+    },
+    "shuffled_label_auc": 0.5192,
+    "have_probe": true
+  },
+  "qwen3-4b|strategyqa": {
+    "slug": "qwen3-4b",
+    "benchmark": "strategyqa",
+    "root": "v3/qwen3-4b/",
+    "generated_at": "2026-07-29T08:17:26Z",
+    "n_analyzed": 287,
+    "n_correct": 213,
+    "n_incorrect": 74,
+    "accuracy": 0.7422,
+    "aucs": {
+      "length_only": {
+        "auc": 0.4542,
+        "ci95": [
+          0.3672,
+          0.5462
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.4815,
+        "ci95": [
+          0.3905,
+          0.5758
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5198,
+        "ci95": [
+          0.4313,
+          0.5998
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.5001,
+        "ci95": [
+          0.4166,
+          0.5787
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.5396,
+        "ci95": [
+          0.4588,
+          0.6284
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.4638,
+        "ci95": [
+          0.3837,
+          0.55
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.5211,
+        "ci95": [
+          0.4387,
+          0.6039
+        ]
+      },
+      "all_combined": {
+        "auc": 0.5216,
+        "ci95": [
+          0.4433,
+          0.5966
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.6515,
+        "ci95": [
+          0.5705,
+          0.7311
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": 0.0581,
+        "ci95": [
+          -0.0656,
+          0.1911
+        ],
+        "p_two_sided": 0.412
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0395,
+        "ci95": [
+          -0.0751,
+          0.175
+        ],
+        "p_two_sided": 0.514
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0198,
+        "ci95": [
+          -0.0895,
+          0.1263
+        ],
+        "p_two_sided": 0.732
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0395,
+        "ci95": [
+          -0.0798,
+          0.1671
+        ],
+        "p_two_sided": 0.576
+      },
+      "probe_vs_jspace": {
+        "delta": 0.1119,
+        "ci95": [
+          -0.0035,
+          0.2203
+        ],
+        "p_two_sided": 0.058
+      },
+      "probe_vs_confidence": {
+        "delta": 0.17,
+        "ci95": [
+          0.0601,
+          0.2781
+        ],
+        "p_two_sided": 0.002
+      }
+    },
+    "shuffled_label_auc": 0.4446,
+    "have_probe": true
+  },
+  "qwen3.5-0.8b|arc": {
+    "slug": "qwen3.5-0.8b",
+    "benchmark": "arc",
+    "root": "v3/qwen3.5-0.8b/",
+    "generated_at": "2026-07-29T07:57:00Z",
+    "n_analyzed": 238,
+    "n_correct": 55,
+    "n_incorrect": 183,
+    "accuracy": 0.2311,
+    "aucs": {
+      "length_only": {
+        "auc": 0.4273,
+        "ci95": [
+          0.3463,
+          0.5093
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.5215,
+        "ci95": [
+          0.4352,
+          0.6049
+        ]
+      },
+      "surface_only": {
+        "auc": 0.4333,
+        "ci95": [
+          0.3486,
+          0.5251
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.4329,
+        "ci95": [
+          0.3459,
+          0.5213
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.4767,
+        "ci95": [
+          0.3905,
+          0.5595
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.6583,
+        "ci95": [
+          0.5676,
+          0.7486
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.4746,
+        "ci95": [
+          0.3893,
+          0.5597
+        ]
+      },
+      "all_combined": {
+        "auc": 0.4082,
+        "ci95": [
+          0.3186,
+          0.4933
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.4831,
+        "ci95": [
+          0.3874,
+          0.5759
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.0448,
+        "ci95": [
+          -0.1495,
+          0.0621
+        ],
+        "p_two_sided": 0.486
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0438,
+        "ci95": [
+          -0.0711,
+          0.1539
+        ],
+        "p_two_sided": 0.446
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0434,
+        "ci95": [
+          -0.0903,
+          0.1667
+        ],
+        "p_two_sided": 0.52
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": -0.0469,
+        "ci95": [
+          -0.1407,
+          0.046
+        ],
+        "p_two_sided": 0.372
+      },
+      "probe_vs_jspace": {
+        "delta": 0.0064,
+        "ci95": [
+          -0.1235,
+          0.1277
+        ],
+        "p_two_sided": 0.87
+      },
+      "probe_vs_confidence": {
+        "delta": -0.0385,
+        "ci95": [
+          -0.147,
+          0.0735
+        ],
+        "p_two_sided": 0.562
+      }
+    },
+    "shuffled_label_auc": 0.5152,
+    "have_probe": true
+  },
+  "qwen3.5-0.8b|bbhlogic": {
+    "slug": "qwen3.5-0.8b",
+    "benchmark": "bbhlogic",
+    "root": "v3/qwen3.5-0.8b/",
+    "generated_at": "2026-07-29T07:53:24Z",
+    "n_analyzed": 234,
+    "n_correct": 92,
+    "n_incorrect": 142,
+    "accuracy": 0.3932,
+    "aucs": {
+      "length_only": {
+        "auc": 0.3788,
+        "ci95": [
+          0.3112,
+          0.4516
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.4927,
+        "ci95": [
+          0.4079,
+          0.5739
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5006,
+        "ci95": [
+          0.4174,
+          0.5805
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.5401,
+        "ci95": [
+          0.4645,
+          0.6191
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.4614,
+        "ci95": [
+          0.3904,
+          0.5347
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5052,
+        "ci95": [
+          0.4262,
+          0.586
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.4424,
+        "ci95": [
+          0.3744,
+          0.5145
+        ]
+      },
+      "all_combined": {
+        "auc": 0.4483,
+        "ci95": [
+          0.368,
+          0.5288
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.6043,
+        "ci95": [
+          0.5355,
+          0.674
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.0312,
+        "ci95": [
+          -0.1361,
+          0.074
+        ],
+        "p_two_sided": 0.574
+      },
+      "jspace_vs_logitlens": {
+        "delta": -0.0787,
+        "ci95": [
+          -0.1733,
+          0.0316
+        ],
+        "p_two_sided": 0.142
+      },
+      "jspace_vs_surface": {
+        "delta": -0.0392,
+        "ci95": [
+          -0.1377,
+          0.0589
+        ],
+        "p_two_sided": 0.46
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": -0.0503,
+        "ci95": [
+          -0.1411,
+          0.0395
+        ],
+        "p_two_sided": 0.304
+      },
+      "probe_vs_jspace": {
+        "delta": 0.1429,
+        "ci95": [
+          0.0591,
+          0.2295
+        ],
+        "p_two_sided": 0.0
+      },
+      "probe_vs_confidence": {
+        "delta": 0.1117,
+        "ci95": [
+          0.0252,
+          0.205
+        ],
+        "p_two_sided": 0.006
+      }
+    },
+    "shuffled_label_auc": 0.5532,
+    "have_probe": true
+  },
+  "qwen3.5-0.8b|gsm8k": {
+    "slug": "qwen3.5-0.8b",
+    "benchmark": "gsm8k",
+    "root": "v2/qwen3.5-0.8b/",
+    "generated_at": "2026-07-29T07:03:24Z",
+    "n_analyzed": 1244,
+    "n_correct": 416,
+    "n_incorrect": 828,
+    "accuracy": 0.3344,
+    "aucs": {
+      "length_only": {
+        "auc": 0.5529,
+        "ci95": [
+          0.5147,
+          0.5929
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.7143,
+        "ci95": [
+          0.6777,
+          0.7498
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5312,
+        "ci95": [
+          0.4965,
+          0.5687
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.6609,
+        "ci95": [
+          0.6246,
+          0.695
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.7131,
+        "ci95": [
+          0.6788,
+          0.7477
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.6415,
+        "ci95": [
+          0.6049,
+          0.6775
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.739,
+        "ci95": [
+          0.7036,
+          0.7717
+        ]
+      },
+      "all_combined": {
+        "auc": 0.7431,
+        "ci95": [
+          0.7116,
+          0.773
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.842,
+        "ci95": [
+          0.816,
+          0.8663
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.0012,
+        "ci95": [
+          -0.0379,
+          0.0343
+        ],
+        "p_two_sided": 0.936
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0522,
+        "ci95": [
+          0.019,
+          0.087
+        ],
+        "p_two_sided": 0.0
+      },
+      "jspace_vs_surface": {
+        "delta": 0.1818,
+        "ci95": [
+          0.1355,
+          0.2294
+        ],
+        "p_two_sided": 0.0
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0247,
+        "ci95": [
+          -0.0029,
+          0.0503
+        ],
+        "p_two_sided": 0.084
+      },
+      "probe_vs_jspace": {
+        "delta": 0.1289,
+        "ci95": [
+          0.096,
+          0.1619
+        ],
+        "p_two_sided": 0.0
+      },
+      "probe_vs_confidence": {
+        "delta": 0.1277,
+        "ci95": [
+          0.0919,
+          0.1641
+        ],
+        "p_two_sided": 0.0
+      }
+    },
+    "shuffled_label_auc": 0.4769,
+    "have_probe": true
+  },
+  "qwen3.5-0.8b|strategyqa": {
+    "slug": "qwen3.5-0.8b",
+    "benchmark": "strategyqa",
+    "root": "v3/qwen3.5-0.8b/",
+    "generated_at": "2026-07-29T07:55:03Z",
+    "n_analyzed": 229,
+    "n_correct": 121,
+    "n_incorrect": 108,
+    "accuracy": 0.5284,
+    "aucs": {
+      "length_only": {
+        "auc": 0.365,
+        "ci95": [
+          0.2927,
+          0.435
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.4191,
+        "ci95": [
+          0.3417,
+          0.5018
+        ]
+      },
+      "surface_only": {
+        "auc": 0.6041,
+        "ci95": [
+          0.53,
+          0.6737
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.554,
+        "ci95": [
+          0.4781,
+          0.6244
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.5006,
+        "ci95": [
+          0.4211,
+          0.5771
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.4711,
+        "ci95": [
+          0.403,
+          0.5485
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.5036,
+        "ci95": [
+          0.4255,
+          0.5842
+        ]
+      },
+      "all_combined": {
+        "auc": 0.5585,
+        "ci95": [
+          0.4788,
+          0.6352
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.4995,
+        "ci95": [
+          0.4249,
+          0.5728
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": 0.0815,
+        "ci95": [
+          -0.0231,
+          0.1858
+        ],
+        "p_two_sided": 0.128
+      },
+      "jspace_vs_logitlens": {
+        "delta": -0.0534,
+        "ci95": [
+          -0.1522,
+          0.0539
+        ],
+        "p_two_sided": 0.318
+      },
+      "jspace_vs_surface": {
+        "delta": -0.1035,
+        "ci95": [
+          -0.1978,
+          -0.0068
+        ],
+        "p_two_sided": 0.04
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0845,
+        "ci95": [
+          -0.007,
+          0.1755
+        ],
+        "p_two_sided": 0.068
+      },
+      "probe_vs_jspace": {
+        "delta": -0.0011,
+        "ci95": [
+          -0.1177,
+          0.1135
+        ],
+        "p_two_sided": 0.974
+      },
+      "probe_vs_confidence": {
+        "delta": 0.0803,
+        "ci95": [
+          -0.0189,
+          0.1822
+        ],
+        "p_two_sided": 0.114
+      }
+    },
+    "shuffled_label_auc": 0.4272,
+    "have_probe": true
+  },
+  "qwen3.5-4b|arc": {
+    "slug": "qwen3.5-4b",
+    "benchmark": "arc",
+    "root": "v3/qwen3.5-4b/",
+    "generated_at": "2026-07-29T07:35:57Z",
+    "n_analyzed": 317,
+    "n_correct": 296,
+    "n_incorrect": 21,
+    "accuracy": 0.9338,
+    "aucs": {
+      "length_only": {
+        "auc": 0.5624,
+        "ci95": [
+          0.4211,
+          0.7041
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.7458,
+        "ci95": [
+          0.6145,
+          0.865
+        ]
+      },
+      "surface_only": {
+        "auc": 0.6327,
+        "ci95": [
+          0.5183,
+          0.7424
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.569,
+        "ci95": [
+          0.4274,
+          0.7051
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.5999,
+        "ci95": [
+          0.4412,
+          0.7389
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5061,
+        "ci95": [
+          0.3821,
+          0.6304
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.7432,
+        "ci95": [
+          0.6201,
+          0.8546
+        ]
+      },
+      "all_combined": {
+        "auc": 0.705,
+        "ci95": [
+          0.5788,
+          0.8159
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.6384,
+        "ci95": [
+          0.4544,
+          0.8162
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.1459,
+        "ci95": [
+          -0.3212,
+          0.0372
+        ],
+        "p_two_sided": 0.12
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0309,
+        "ci95": [
+          -0.1229,
+          0.2063
+        ],
+        "p_two_sided": 0.706
+      },
+      "jspace_vs_surface": {
+        "delta": -0.0328,
+        "ci95": [
+          -0.178,
+          0.105
+        ],
+        "p_two_sided": 0.702
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": -0.0026,
+        "ci95": [
+          -0.1315,
+          0.134
+        ],
+        "p_two_sided": 0.968
+      },
+      "probe_vs_jspace": {
+        "delta": 0.0384,
+        "ci95": [
+          -0.0974,
+          0.1723
+        ],
+        "p_two_sided": 0.586
+      },
+      "probe_vs_confidence": {
+        "delta": -0.1075,
+        "ci95": [
+          -0.3131,
+          0.1141
+        ],
+        "p_two_sided": 0.316
+      }
+    },
+    "shuffled_label_auc": 0.4389,
+    "have_probe": true
+  },
+  "qwen3.5-4b|bbhlogic": {
+    "slug": "qwen3.5-4b",
+    "benchmark": "bbhlogic",
+    "root": "v3/qwen3.5-4b/",
+    "generated_at": "2026-07-29T07:32:37Z",
+    "n_analyzed": 376,
+    "n_correct": 306,
+    "n_incorrect": 70,
+    "accuracy": 0.8138,
+    "aucs": {
+      "length_only": {
+        "auc": 0.6386,
+        "ci95": [
+          0.5686,
+          0.7104
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.6387,
+        "ci95": [
+          0.5684,
+          0.7066
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5542,
+        "ci95": [
+          0.4774,
+          0.6344
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.6146,
+        "ci95": [
+          0.5449,
+          0.6827
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.5908,
+        "ci95": [
+          0.5156,
+          0.6716
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5983,
+        "ci95": [
+          0.5267,
+          0.6714
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.6463,
+        "ci95": [
+          0.5679,
+          0.7211
+        ]
+      },
+      "all_combined": {
+        "auc": 0.6623,
+        "ci95": [
+          0.591,
+          0.7275
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.8079,
+        "ci95": [
+          0.7519,
+          0.8595
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.0479,
+        "ci95": [
+          -0.1314,
+          0.0421
+        ],
+        "p_two_sided": 0.298
+      },
+      "jspace_vs_logitlens": {
+        "delta": -0.0238,
+        "ci95": [
+          -0.1167,
+          0.0727
+        ],
+        "p_two_sided": 0.634
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0366,
+        "ci95": [
+          -0.062,
+          0.1361
+        ],
+        "p_two_sided": 0.484
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0076,
+        "ci95": [
+          -0.0688,
+          0.0884
+        ],
+        "p_two_sided": 0.862
+      },
+      "probe_vs_jspace": {
+        "delta": 0.2171,
+        "ci95": [
+          0.1188,
+          0.3088
+        ],
+        "p_two_sided": 0.0
+      },
+      "probe_vs_confidence": {
+        "delta": 0.1692,
+        "ci95": [
+          0.0938,
+          0.2443
+        ],
+        "p_two_sided": 0.0
+      }
+    },
+    "shuffled_label_auc": 0.4652,
+    "have_probe": true
+  },
+  "qwen3.5-4b|gsm8k": {
+    "slug": "qwen3.5-4b",
+    "benchmark": "gsm8k",
+    "root": "",
+    "generated_at": "2026-07-29T07:00:20Z",
+    "n_analyzed": 1365,
+    "n_correct": 1147,
+    "n_incorrect": 218,
+    "accuracy": 0.8403,
+    "aucs": {
+      "length_only": {
+        "auc": 0.6166,
+        "ci95": [
+          0.5653,
+          0.6652
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.7154,
+        "ci95": [
+          0.6689,
+          0.7629
+        ]
+      },
+      "surface_only": {
+        "auc": 0.5154,
+        "ci95": [
+          0.4628,
+          0.5658
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.6691,
+        "ci95": [
+          0.6139,
+          0.72
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.7068,
+        "ci95": [
+          0.6603,
+          0.7534
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5535,
+        "ci95": [
+          0.503,
+          0.6083
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.759,
+        "ci95": [
+          0.7112,
+          0.8054
+        ]
+      },
+      "all_combined": {
+        "auc": 0.7446,
+        "ci95": [
+          0.6935,
+          0.7903
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.8469,
+        "ci95": [
+          0.8061,
+          0.8853
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": -0.0086,
+        "ci95": [
+          -0.0684,
+          0.055
+        ],
+        "p_two_sided": 0.748
+      },
+      "jspace_vs_logitlens": {
+        "delta": 0.0376,
+        "ci95": [
+          -0.0222,
+          0.0938
+        ],
+        "p_two_sided": 0.202
+      },
+      "jspace_vs_surface": {
+        "delta": 0.1914,
+        "ci95": [
+          0.1272,
+          0.2551
+        ],
+        "p_two_sided": 0.0
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0436,
+        "ci95": [
+          -0.0061,
+          0.091
+        ],
+        "p_two_sided": 0.08
+      },
+      "probe_vs_jspace": {
+        "delta": 0.1402,
+        "ci95": [
+          0.0814,
+          0.1947
+        ],
+        "p_two_sided": 0.0
+      },
+      "probe_vs_confidence": {
+        "delta": 0.1315,
+        "ci95": [
+          0.0855,
+          0.1759
+        ],
+        "p_two_sided": 0.0
+      }
+    },
+    "shuffled_label_auc": 0.4948,
+    "have_probe": true
+  },
+  "qwen3.5-4b|strategyqa": {
+    "slug": "qwen3.5-4b",
+    "benchmark": "strategyqa",
+    "root": "v3/qwen3.5-4b/",
+    "generated_at": "2026-07-29T07:34:19Z",
+    "n_analyzed": 292,
+    "n_correct": 197,
+    "n_incorrect": 95,
+    "accuracy": 0.6747,
+    "aucs": {
+      "length_only": {
+        "auc": 0.4057,
+        "ci95": [
+          0.3406,
+          0.4785
+        ]
+      },
+      "confidence_only": {
+        "auc": 0.4809,
+        "ci95": [
+          0.392,
+          0.5594
+        ]
+      },
+      "surface_only": {
+        "auc": 0.4608,
+        "ci95": [
+          0.386,
+          0.5403
+        ]
+      },
+      "logitlens_only": {
+        "auc": 0.5295,
+        "ci95": [
+          0.4526,
+          0.6072
+        ]
+      },
+      "jspace_only": {
+        "auc": 0.4986,
+        "ci95": [
+          0.4249,
+          0.5692
+        ]
+      },
+      "random_readout_only": {
+        "auc": 0.5335,
+        "ci95": [
+          0.4585,
+          0.6052
+        ]
+      },
+      "jspace_plus_confidence": {
+        "auc": 0.5433,
+        "ci95": [
+          0.4712,
+          0.6142
+        ]
+      },
+      "all_combined": {
+        "auc": 0.517,
+        "ci95": [
+          0.4399,
+          0.5911
+        ]
+      },
+      "resid_probe_mid": {
+        "auc": 0.6648,
+        "ci95": [
+          0.5824,
+          0.742
+        ]
+      }
+    },
+    "paired_deltas": {
+      "jspace_vs_confidence": {
+        "delta": 0.0177,
+        "ci95": [
+          -0.0836,
+          0.1207
+        ],
+        "p_two_sided": 0.752
+      },
+      "jspace_vs_logitlens": {
+        "delta": -0.0309,
+        "ci95": [
+          -0.1104,
+          0.0475
+        ],
+        "p_two_sided": 0.468
+      },
+      "jspace_vs_surface": {
+        "delta": 0.0378,
+        "ci95": [
+          -0.0681,
+          0.1264
+        ],
+        "p_two_sided": 0.45
+      },
+      "jspace_plus_conf_vs_conf": {
+        "delta": 0.0624,
+        "ci95": [
+          -0.0207,
+          0.1446
+        ],
+        "p_two_sided": 0.142
+      },
+      "probe_vs_jspace": {
+        "delta": 0.1662,
+        "ci95": [
+          0.0698,
+          0.2682
+        ],
+        "p_two_sided": 0.0
+      },
+      "probe_vs_confidence": {
+        "delta": 0.1839,
+        "ci95": [
+          0.0842,
+          0.293
+        ],
+        "p_two_sided": 0.0
+      }
+    },
+    "shuffled_label_auc": 0.5232,
+    "have_probe": true
+  }
+}

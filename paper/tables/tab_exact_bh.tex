@@ -1,0 +1,21 @@
+\begin{table}[H]
+\centering\small
+\caption{Left: test AUC of the frozen scorer, and coverage of rule~\eqref{eq:cert} (``excl.'', boundary trace excluded) and of the boundary-included variant (``incl.''), $\alpha=\pi_0$. Right: BH conformal selection at level $\alpha=\pi_0$: mean number of calibration errors $n_0$, the lattice minimum $\lceil m/(\alpha(n_0+1))\rceil$ of Proposition~\ref{prop:lattice} relative to the test size $m$, and the fraction of replicates with no rejection.}
+\label{tab:bh}
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{l ccc ccc ccc rr ccc}
+\toprule
+ & \multicolumn{3}{c}{Confidence} & \multicolumn{3}{c}{J-lens} & \multicolumn{3}{c}{Probe} & & & \multicolumn{3}{c}{BH: no rejection} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}\cmidrule(lr){13-15}
+Model & AUC & excl. & incl. & AUC & excl. & incl. & AUC & excl. & incl. & $n_0$ & min.\ rej. & Conf. & J-lens & Probe \\
+\midrule
+Qwen3.5-0.8B & 0.70 & 0.218 & 0.213 & 0.66 & 0.080 & 0.077 & 0.81 & 0.489 & 0.486 & 107.8 & 2/119 & 0.09 & 0.21 & 0.01 \\
+Qwen3.5-4B & 0.73 & 0.389 & 0.390 & 0.65 & 0.176 & 0.172 & 0.82 & 0.721 & 0.715 & 23.4 & 31/116 & 0.87 & 0.97 & 0.57 \\
+OLMo-3-7B & 0.75 & 0.326 & 0.313 & 0.63 & 0.081 & 0.081 & 0.76 & 0.338 & 0.323 & 23.4 & 6/50 & 0.41 & 0.69 & 0.28 \\
+Qwen3-1.7B & 0.66 & 0.094 & 0.088 & 0.61 & 0.042 & 0.047 & 0.76 & 0.212 & 0.216 & 17.9 & 15/58 & 0.96 & 0.96 & 0.76 \\
+Qwen2.5-7B-It & 0.60 & 0.149 & 0.160 & 0.62 & 0.156 & 0.157 & 0.68 & 0.232 & 0.232 & 12.9 & 18/54 & 0.98 & 0.90 & 0.91 \\
+Qwen3-4B & 0.66 & 0.199 & 0.189 & 0.61 & 0.155 & 0.148 & 0.71 & 0.311 & 0.300 & 14.3 & 79/114 & 1.00 & 1.00 & 1.00 \\
+Qwen3-8B & 0.61 & 0.016 & 0.019 & 0.47 & 0.014 & 0.012 & 0.67 & 0.039 & 0.043 & 6.5 & 79/55 & 1.00 & 1.00 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}

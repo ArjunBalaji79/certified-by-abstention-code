@@ -1,0 +1,19 @@
+\begin{table}[H]
+\centering\small
+\caption{GSM8K out-of-fold AUC (5-fold, grouped by problem, logistic regression) of each signal, and paired bootstrap differences ($^{*}$: two-sided $p<0.05$, uncorrected). ``Random'': J-lens features with a norm-matched random transport. These are cross-validated AUCs on all traces and differ from the frozen-scorer test AUCs of Table~\ref{tab:main}.}
+\label{tab:auc}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrr cccccc ccc}
+\toprule
+Model & Traces & Acc. & Conf. & J-lens & Logit lens & Surface & Random & Probe & J$-$Conf. & J$-$Surf. & Probe$-$J \\
+\midrule
+Qwen3.5-0.8B & 1244 & 0.33 & 0.714 & 0.713 & 0.661 & 0.531 & 0.641 & 0.842 & -0.001 & +0.182$^{*}$ & +0.129$^{*}$ \\
+Qwen3.5-4B & 1365 & 0.84 & 0.715 & 0.707 & 0.669 & 0.515 & 0.553 & 0.847 & -0.009 & +0.191$^{*}$ & +0.140$^{*}$ \\
+OLMo-3-7B & 295 & 0.66 & 0.748 & 0.642 & 0.595 & 0.613 & 0.594 & 0.770 & -0.106$^{*}$ & +0.029 & +0.128$^{*}$ \\
+Qwen3-1.7B & 373 & 0.78 & 0.675 & 0.679 & 0.635 & 0.612 & 0.604 & 0.810 & +0.005 & +0.067 & +0.131$^{*}$ \\
+Qwen2.5-7B-It & 323 & 0.81 & 0.584 & 0.648 & 0.522 & 0.602 & 0.559 & 0.668 & +0.065 & +0.046 & +0.020 \\
+Qwen3-4B & 1387 & 0.91 & 0.610 & 0.607 & 0.551 & 0.549 & 0.625 & 0.751 & -0.003 & +0.057 & +0.144$^{*}$ \\
+Qwen3-8B & 350 & 0.91 & 0.592 & 0.344 & 0.411 & 0.271 & 0.479 & 0.809 & -0.248$^{*}$ & +0.073 & +0.466$^{*}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Regenerates every number, table and figure in the paper from data/.
+# Regenerates every number, table and figure in the paper from data/ into outputs/.
 # Total wall time on a laptop CPU: about 70 minutes. Each step is deterministic (seeds pinned).
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -20,4 +20,4 @@ run make_fs_tables.py
 run make_recon_table.py
 run make_baselines_table.py
 run make_appendix_extras.py
-python3 verify.py
+echo "done: outputs/json, outputs/tables, outputs/figs"

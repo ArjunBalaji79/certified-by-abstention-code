@@ -7,7 +7,7 @@ BON = os.path.join(DATA, "bon")                # best-of-n samples, frozen score
 FEATURES = os.path.join(DATA, "features")      # readable feature matrices and residual-stream blocks (7 models)
 PIPELINE_OUT = os.path.join(DATA, "pipeline_outputs")
 OUT_JSON = os.path.join(ROOT, "outputs", "json")
-FIGS = os.path.join(ROOT, "paper", "figs")
-TABLES = os.path.join(ROOT, "paper", "tables")
+FIGS = os.path.join(ROOT, "outputs", "figs")
+TABLES = os.path.join(ROOT, "outputs", "tables")
 for _d in (OUT_JSON, FIGS, TABLES):
     os.makedirs(_d, exist_ok=True)

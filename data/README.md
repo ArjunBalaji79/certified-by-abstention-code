@@ -46,7 +46,7 @@ Residual-stream vectors (float16) at three depths × two positions: `early_step`
 
 ## `pipeline_outputs/`
 
-`results_v3_cross.json`, `results_v4_cross.json`: cross-validated AUCs and paired bootstrap differences of every signal per (model, benchmark) cell, produced by `pipeline/jspace_pipeline.py`. Used only for Appendix Table 11.
+`results_v3_cross.json`, `results_v4_cross.json`: cross-validated AUCs and paired bootstrap differences of every signal per (model, benchmark) cell, produced by `pipeline/jspace_pipeline.py`. Used only for Appendix Table 12 (test AUCs and bootstrap differences).
 
 ## Provenance
 

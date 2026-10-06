@@ -1,5 +1,5 @@
 __pycache__/
 *.pyc
 *.log
-outputs/*.log
 .DS_Store
+outputs/

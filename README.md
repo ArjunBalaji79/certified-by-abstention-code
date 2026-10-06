@@ -31,13 +31,15 @@ pipeline/    the Modal/GPU pipeline that produced data/ (not needed to reproduce
 | Script | Output | In the paper |
 |---|---|---|
 | `analysis/conformal_extras.py` | `CONFORMAL_EXTRAS.json` | Table 1, Tables 5–6, Section 4 |
-| `analysis/shift_extras.py` | `SHIFT_EXTRAS.json` | Section 6, Table 9, Figure 6 |
+| `analysis/shift_extras.py` | `SHIFT_EXTRAS.json` | Section 6, Table 10, Figure 6 |
 | `analysis/bounds_extras.py` | `BOUNDS_EXTRAS.json` | Sections 4.1–4.2, Tables 4 and 7, Figure 5 |
-| `analysis/probe_recon.py` | `PROBE_RECON.json` | Section 4 ("Why the probe wins"), Table 3 |
-| `analysis/goodhart_extras.py` | `GOODHART_EXTRAS.json` | Section 7, Table 10, Figures 3 and 7 |
+| `analysis/probe_recon.py` | `PROBE_RECON.json` | Section 4.3 ("Why the probe wins"), Appendix C, Table 3 |
+| `analysis/goodhart_extras.py` | `GOODHART_EXTRAS.json` | Section 7, Table 11, Figures 3 and 7 |
 | `analysis/fs_floor_eval.py` | `FS_FLOOR2.json` | Section 5, Tables 2 and 8, Figure 4 |
 | `analysis/budget_curve.py` | `BUDGET_CURVE.json` | Figure 2 |
-| `analysis/make_tables.py`, `make_fs_tables.py`, `make_recon_table.py`, `make_appendix_extras.py` | `paper/tables/*.tex`, appendix figures | all tables |
+| `analysis/synthetic_overshoot.py` | `SYNTH_OVERSHOOT.json` | Table 7 (overshoot of failing certificates) |
+| `analysis/fs_baselines.py` | `FS_BASELINES.json` | Section 5, Table 9 (baselines and predicted P_fire) |
+| `analysis/make_tables.py`, `make_fs_tables.py`, `make_recon_table.py`, `make_baselines_table.py`, `make_appendix_extras.py` | `paper/tables/*.tex`, appendix figures | all tables |
 | `analysis/make_figures.py`, `redraw_budget.py` | `paper/figs/*.pdf` | Figures 1–3 |
 
 `outputs/json/PROSE_NUMBERS.json` and `FS_PROSE.json` hold the scalars quoted in the text.

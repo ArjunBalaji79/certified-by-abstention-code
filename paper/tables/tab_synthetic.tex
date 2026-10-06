@@ -1,34 +1,35 @@
 \begin{table}[H]
 \centering\small
-\caption{Gaussian score model with known selective risk; 20{,}000 calibration draws per row, $\delta=0.10$. $P(R>\alpha)$ is the quantity bounded by $(\alpha,\delta)$-validity; $P(R>\alpha\mid\text{fire})$ is the probability that an issued certificate is wrong.}
+\caption{Gaussian score model with known selective risk; 20{,}000 calibration draws per row, $\delta=0.10$. $P(R>\alpha)$ is the quantity bounded by $(\alpha,\delta)$-validity; $P(R>\alpha\mid\text{fire})$ is the probability that an issued certificate is wrong; the next two columns give the median and 90th percentile of $R(\hat\lambda)/\alpha$ among failing draws, i.e.\ how far a wrong certificate overshoots its target.}
 \label{tab:synthetic}
-\begin{tabular}{cccc l cccc}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{cccc l cccccc}
 \toprule
-$\pi_0$ & AUC & $n_{\mathrm{cal}}$ & $\alpha$ & Procedure & $P_{\mathrm{fire}}$ & $P(R>\alpha)$ & $P(R>\alpha\mid\text{fire})$ & Mean cov. \\
+$\pi_0$ & AUC & $n_{\mathrm{cal}}$ & $\alpha$ & Procedure & $P_{\mathrm{fire}}$ & $P(R>\alpha)$ & $P(R>\alpha\mid\text{fire})$ & med.\ $R/\alpha$ & p90 $R/\alpha$ & Mean cov. \\
 \midrule
-0.16 & 0.82 & 154 & $0.75\pi_0$ & CP, Eq.~(1) & 0.558 & 0.0014 & 0.003 & 0.322 \\
-0.16 & 0.82 & 154 & $0.75\pi_0$ & Data-dep.\ walk & 0.985 & 0.0319 & 0.032 & 0.631 \\
+0.16 & 0.82 & 154 & $0.75\pi_0$ & CP, Eq.~(1) & 0.558 & 0.0014 & 0.003 & 1.06 & 1.13 & 0.322 \\
+0.16 & 0.82 & 154 & $0.75\pi_0$ & Data-dep.\ walk & 0.985 & 0.0319 & 0.032 & 1.06 & 1.24 & 0.631 \\
 \addlinespace
-0.16 & 0.82 & 154 & $0.5\pi_0$ & CP, Eq.~(1) & 0.089 & 0.0019 & 0.021 & 0.049 \\
-0.16 & 0.82 & 154 & $0.5\pi_0$ & Data-dep.\ walk & 0.770 & 0.0368 & 0.048 & 0.331 \\
+0.16 & 0.82 & 154 & $0.5\pi_0$ & CP, Eq.~(1) & 0.089 & 0.0019 & 0.021 & 1.04 & 1.15 & 0.049 \\
+0.16 & 0.82 & 154 & $0.5\pi_0$ & Data-dep.\ walk & 0.770 & 0.0368 & 0.048 & 1.11 & 1.34 & 0.331 \\
 \addlinespace
-0.16 & 0.71 & 154 & $0.75\pi_0$ & CP, Eq.~(1) & 0.112 & 0.0018 & 0.016 & 0.054 \\
-0.16 & 0.71 & 154 & $0.75\pi_0$ & Data-dep.\ walk & 0.724 & 0.0374 & 0.052 & 0.306 \\
+0.16 & 0.71 & 154 & $0.75\pi_0$ & CP, Eq.~(1) & 0.112 & 0.0018 & 0.016 & 1.04 & 1.14 & 0.054 \\
+0.16 & 0.71 & 154 & $0.75\pi_0$ & Data-dep.\ walk & 0.724 & 0.0374 & 0.052 & 1.09 & 1.20 & 0.306 \\
 \addlinespace
-0.16 & 0.71 & 154 & $0.5\pi_0$ & CP, Eq.~(1) & 0.005 & 0.0026 & 0.520 & 0.003 \\
-0.16 & 0.71 & 154 & $0.5\pi_0$ & Data-dep.\ walk & 0.276 & 0.0433 & 0.157 & 0.092 \\
+0.16 & 0.71 & 154 & $0.5\pi_0$ & CP, Eq.~(1) & 0.005 & 0.0026 & 0.520 & 1.12 & 1.28 & 0.003 \\
+0.16 & 0.71 & 154 & $0.5\pi_0$ & Data-dep.\ walk & 0.276 & 0.0433 & 0.157 & 1.11 & 1.35 & 0.092 \\
 \addlinespace
-0.22 & 0.76 & 78 & $0.75\pi_0$ & CP, Eq.~(1) & 0.118 & 0.0020 & 0.017 & 0.061 \\
-0.22 & 0.76 & 78 & $0.75\pi_0$ & Data-dep.\ walk & 0.712 & 0.0411 & 0.058 & 0.339 \\
+0.22 & 0.76 & 78 & $0.75\pi_0$ & CP, Eq.~(1) & 0.118 & 0.0020 & 0.017 & 1.07 & 1.22 & 0.061 \\
+0.22 & 0.76 & 78 & $0.75\pi_0$ & Data-dep.\ walk & 0.712 & 0.0411 & 0.058 & 1.10 & 1.27 & 0.339 \\
 \addlinespace
-0.22 & 0.76 & 78 & $0.5\pi_0$ & CP, Eq.~(1) & 0.004 & 0.0025 & 0.694 & 0.002 \\
-0.22 & 0.76 & 78 & $0.5\pi_0$ & Data-dep.\ walk & 0.309 & 0.0418 & 0.135 & 0.135 \\
+0.22 & 0.76 & 78 & $0.5\pi_0$ & CP, Eq.~(1) & 0.004 & 0.0025 & 0.694 & 1.11 & 1.23 & 0.002 \\
+0.22 & 0.76 & 78 & $0.5\pi_0$ & Data-dep.\ walk & 0.309 & 0.0418 & 0.135 & 1.14 & 1.40 & 0.135 \\
 \addlinespace
-0.09 & 0.66 & 153 & $0.75\pi_0$ & CP, Eq.~(1) & 0.019 & 0.0027 & 0.148 & 0.011 \\
-0.09 & 0.66 & 153 & $0.75\pi_0$ & Data-dep.\ walk & 0.337 & 0.0359 & 0.106 & 0.158 \\
+0.09 & 0.66 & 153 & $0.75\pi_0$ & CP, Eq.~(1) & 0.019 & 0.0027 & 0.148 & 1.12 & 1.24 & 0.011 \\
+0.09 & 0.66 & 153 & $0.75\pi_0$ & Data-dep.\ walk & 0.337 & 0.0359 & 0.106 & 1.11 & 1.27 & 0.158 \\
 \addlinespace
-0.09 & 0.66 & 153 & $0.5\pi_0$ & CP, Eq.~(1) & 0.000 & 0.0001 & 1.000 & 0.000 \\
-0.09 & 0.66 & 153 & $0.5\pi_0$ & Data-dep.\ walk & 0.089 & 0.0786 & 0.882 & 0.041 \\
+0.09 & 0.66 & 153 & $0.5\pi_0$ & CP, Eq.~(1) & 0.000 & 0.0001 & 1.000 & 1.59 & 1.62 & 0.000 \\
+0.09 & 0.66 & 153 & $0.5\pi_0$ & Data-dep.\ walk & 0.089 & 0.0786 & 0.882 & 1.11 & 1.37 & 0.041 \\
 \bottomrule
 \end{tabular}
 \end{table}

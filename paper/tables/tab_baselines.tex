@@ -1,0 +1,17 @@
+\begin{table}[H]
+\centering\scriptsize
+\caption{FS-floor against two cheap baselines on the real cells (means over 7 models $\times$ 3 signals, 1{,}000 replicates; each entry is mean coverage / $P_{\mathrm{fire}}$). $G$: number of Bonferroni grid points in rule~\eqref{eq:cert} ($G=20$ in the paper). Floor start: the single fixed threshold at $j_0$ tested at level $\delta$, i.e.\ FS-floor without the walk. Wins: pairs where FS-floor covers more than the baseline. The last two columns compare the $P_{\mathrm{fire}}$ predicted before calibration by the simulation that chooses $c$ with the realized $P_{\mathrm{fire}}$ across the 21 pairs (Spearman correlation and mean absolute error).}
+\label{tab:baselines}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{l ccccc cc cc}
+\toprule
+ & \multicolumn{3}{c}{Rule~\eqref{eq:cert}} & & & \multicolumn{2}{c}{FS-floor wins vs.} & \multicolumn{2}{c}{Predicted $P_{\mathrm{fire}}$} \\
+\cmidrule(lr){2-4}\cmidrule(lr){7-8}\cmidrule(lr){9-10}
+Target & $G{=}20$ & $G{=}10$ & $G{=}5$ & Floor start & FS-floor & $G{=}5$ & Floor start & Spearman & MAE \\
+\midrule
+$\pi_0$ & 0.211 / 0.33 & 0.242 / 0.37 & 0.259 / 0.40 & 0.186 / 0.50 & 0.390 / 0.50 & 21/21 & 21/21 & 0.72 & 0.154 \\
+$0.75\pi_0$ & 0.051 / 0.10 & 0.067 / 0.13 & 0.072 / 0.14 & 0.101 / 0.28 & 0.163 / 0.28 & 21/21 & 21/21 & 0.70 & 0.104 \\
+$0.5\pi_0$ & 0.004 / 0.01 & 0.007 / 0.01 & 0.010 / 0.02 & 0.024 / 0.07 & 0.033 / 0.07 & 20/21 & 21/21 & 0.72 & 0.046 \\
+\bottomrule
+\end{tabular}
+\end{table}

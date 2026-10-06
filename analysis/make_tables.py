@@ -48,11 +48,9 @@ def tab_main():
             cells += [f(x1["coverage"]), f(1 - x1["p_empty"], 3), ratio(x1, e1["alpha"]), f(x2["coverage"]), f(1 - x2["p_empty"], 3)]
         rows.append(" & ".join(cells) + r" \\")
     hdr = (r"\begin{table*}[t]" "\n" r"\centering\scriptsize" "\n"
-           r"\caption{CP selective certificate (rule~\eqref{eq:cert}) on GSM8K, $\delta=0.10$, 1{,}000 replicates per cell. "
-           r"$n_{\mathrm{cal}}$: calibration problems. $\hat\pi_0$: base error rate of the training partition (mean over seeds), which sets the targets; "
-           r"$\pi_0^{\mathrm{held}}$: base error rate of the remaining problems. For each signal: mean coverage, $P_{\mathrm{fire}}$ and $\hat R/\alpha$ "
-           r"(error among accepted test traces pooled over firing replicates, relative to the target; -- if fewer than 50 replicates fire) at the boundary target "
-           r"$\alpha=\hat\pi_0$, and coverage and $P_{\mathrm{fire}}$ at $\alpha=0.75\hat\pi_0$. Test AUCs of the frozen scorers are in Appendix Table~\ref{tab:bh}.}" "\n"
+           r"\caption{Rule~\eqref{eq:cert} on GSM8K, $\delta=0.10$, 1{,}000 replicates per cell. $n_{\mathrm{cal}}$: calibration problems; $\hat\pi_0$: training-partition base error (sets the targets); "
+           r"$\pi_0^{\mathrm{held}}$: base error of the remaining problems. Per signal: mean coverage, $P_{\mathrm{fire}}$ and $\hat R/\alpha$ (error among accepted test traces pooled over firing "
+           r"replicates, relative to the target; -- if fewer than 50 replicates fire) at $\alpha=\hat\pi_0$, and coverage and $P_{\mathrm{fire}}$ at $0.75\hat\pi_0$. Test AUCs: Appendix Table~\ref{tab:bh}.}" "\n"
            r"\label{tab:main}" "\n" r"\setlength{\tabcolsep}{2.6pt}" "\n"
            r"\begin{tabular}{lrrr rrrrr rrrrr rrrrr}" "\n" r"\toprule" "\n"
            r" & & & & \multicolumn{5}{c}{Confidence} & \multicolumn{5}{c}{J-lens} & \multicolumn{5}{c}{Probe} \\" "\n"
@@ -89,21 +87,25 @@ def tab_bounds():
 
 def tab_synthetic():
     B = json.load(open(os.path.join(paths.OUT_JSON, "BOUNDS_EXTRAS.json")))["synthetic"]
+    O = json.load(open(os.path.join(paths.OUT_JSON, "SYNTH_OVERSHOOT.json")))
     rows = []
     for key, v in B.items():
         kv = dict(x.split("=") for x in key.split("|"))
         for m, lab in (("cp", "CP, Eq.~(1)"), ("walk_from_first_pass", "Data-dep.\\ walk")):
-            r = v[m]
+            r = v[m]; o = O[key].get(m, {})
             cg = "--" if r["p_risk_gt_alpha_given_fire"] is None else f"{r['p_risk_gt_alpha_given_fire']:.3f}"
+            med = "--" if o.get("median_R_over_alpha_fail") is None else f"{o['median_R_over_alpha_fail']:.2f}"
+            p90 = "--" if o.get("p90_R_over_alpha_fail") is None else f"{o['p90_R_over_alpha_fail']:.2f}"
             rows.append(" & ".join([kv["pi0"], kv["auc"], kv["ncal"], f"${kv['rho']}\\pi_0$", lab,
-                                    f"{r['p_fire']:.3f}", f"{r['p_risk_gt_alpha']:.4f}", cg,
+                                    f"{r['p_fire']:.3f}", f"{r['p_risk_gt_alpha']:.4f}", cg, med, p90,
                                     f"{r['mean_coverage']:.3f}"]) + r" \\")
         rows.append(r"\addlinespace")
     s = (r"\begin{table}[H]" "\n" r"\centering\small" "\n"
          r"\caption{Gaussian score model with known selective risk; 20{,}000 calibration draws per row, $\delta=0.10$. "
-         r"$P(R>\alpha)$ is the quantity bounded by $(\alpha,\delta)$-validity; $P(R>\alpha\mid\text{fire})$ is the probability that an issued certificate is wrong.}"
-         "\n" r"\label{tab:synthetic}" "\n" r"\begin{tabular}{cccc l cccc}" "\n" r"\toprule" "\n"
-         r"$\pi_0$ & AUC & $n_{\mathrm{cal}}$ & $\alpha$ & Procedure & $P_{\mathrm{fire}}$ & $P(R>\alpha)$ & $P(R>\alpha\mid\text{fire})$ & Mean cov. \\" "\n" r"\midrule" "\n"
+         r"$P(R>\alpha)$ is the quantity bounded by $(\alpha,\delta)$-validity; $P(R>\alpha\mid\text{fire})$ is the probability that an issued certificate is wrong; "
+         r"the next two columns give the median and 90th percentile of $R(\hat\lambda)/\alpha$ among failing draws, i.e.\ how far a wrong certificate overshoots its target.}"
+         "\n" r"\label{tab:synthetic}" "\n" r"\setlength{\tabcolsep}{4pt}" "\n" r"\begin{tabular}{cccc l cccccc}" "\n" r"\toprule" "\n"
+         r"$\pi_0$ & AUC & $n_{\mathrm{cal}}$ & $\alpha$ & Procedure & $P_{\mathrm{fire}}$ & $P(R>\alpha)$ & $P(R>\alpha\mid\text{fire})$ & med.\ $R/\alpha$ & p90 $R/\alpha$ & Mean cov. \\" "\n" r"\midrule" "\n"
          + "\n".join(rows[:-1]) + "\n" r"\bottomrule" "\n" r"\end{tabular}" "\n" r"\end{table}" "\n")
     open(os.path.join(OUT, "tab_synthetic.tex"), "w").write(s)
 

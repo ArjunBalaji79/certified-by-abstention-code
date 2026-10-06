@@ -1,0 +1,258 @@
+{
+ "pi0=0.16|auc=0.82|ncal=154|rho=0.75": {
+  "walk_from_first_pass": {
+   "n_fire": 19706,
+   "mean_R_over_alpha_fire": 0.558,
+   "n_fail": 638,
+   "median_R_over_alpha_fail": 1.058,
+   "p90_R_over_alpha_fail": 1.242,
+   "max_R_over_alpha_fail": 1.333
+  },
+  "cp": {
+   "n_fire": 11157,
+   "mean_R_over_alpha_fire": 0.45,
+   "n_fail": 29,
+   "median_R_over_alpha_fail": 1.065,
+   "p90_R_over_alpha_fail": 1.134,
+   "max_R_over_alpha_fail": 1.282
+  },
+  "hb": {
+   "n_fire": 9169,
+   "mean_R_over_alpha_fire": 0.406,
+   "n_fail": 9,
+   "median_R_over_alpha_fail": 1.049,
+   "p90_R_over_alpha_fail": 1.08,
+   "max_R_over_alpha_fail": 1.12
+  },
+  "bet": {
+   "n_fire": 3624,
+   "mean_R_over_alpha_fire": 0.419,
+   "n_fail": 3,
+   "median_R_over_alpha_fail": 1.034,
+   "p90_R_over_alpha_fail": 1.046,
+   "max_R_over_alpha_fail": 1.049
+  }
+ },
+ "pi0=0.16|auc=0.82|ncal=154|rho=0.5": {
+  "walk_from_first_pass": {
+   "n_fire": 15402,
+   "mean_R_over_alpha_fire": 0.482,
+   "n_fail": 736,
+   "median_R_over_alpha_fail": 1.111,
+   "p90_R_over_alpha_fail": 1.339,
+   "max_R_over_alpha_fail": 1.959
+  },
+  "cp": {
+   "n_fire": 1786,
+   "mean_R_over_alpha_fire": 0.604,
+   "n_fail": 37,
+   "median_R_over_alpha_fail": 1.043,
+   "p90_R_over_alpha_fail": 1.147,
+   "max_R_over_alpha_fail": 1.479
+  },
+  "hb": {
+   "n_fire": 1431,
+   "mean_R_over_alpha_fire": 0.537,
+   "n_fail": 9,
+   "median_R_over_alpha_fail": 1.06,
+   "p90_R_over_alpha_fail": 1.224,
+   "max_R_over_alpha_fail": 1.323
+  },
+  "bet": {
+   "n_fire": 130,
+   "mean_R_over_alpha_fire": 0.701,
+   "n_fail": 4,
+   "median_R_over_alpha_fail": 1.042,
+   "p90_R_over_alpha_fail": 1.077,
+   "max_R_over_alpha_fail": 1.084
+  }
+ },
+ "pi0=0.16|auc=0.71|ncal=154|rho=0.75": {
+  "walk_from_first_pass": {
+   "n_fire": 14487,
+   "mean_R_over_alpha_fire": 0.616,
+   "n_fail": 747,
+   "median_R_over_alpha_fail": 1.086,
+   "p90_R_over_alpha_fail": 1.198,
+   "max_R_over_alpha_fail": 1.331
+  },
+  "cp": {
+   "n_fire": 2232,
+   "mean_R_over_alpha_fire": 0.669,
+   "n_fail": 36,
+   "median_R_over_alpha_fail": 1.043,
+   "p90_R_over_alpha_fail": 1.141,
+   "max_R_over_alpha_fail": 1.329
+  },
+  "hb": {
+   "n_fire": 1628,
+   "mean_R_over_alpha_fire": 0.629,
+   "n_fail": 13,
+   "median_R_over_alpha_fail": 1.039,
+   "p90_R_over_alpha_fail": 1.121,
+   "max_R_over_alpha_fail": 1.154
+  },
+  "bet": {
+   "n_fire": 327,
+   "mean_R_over_alpha_fire": 0.678,
+   "n_fail": 1,
+   "median_R_over_alpha_fail": 1.007,
+   "p90_R_over_alpha_fail": 1.007,
+   "max_R_over_alpha_fail": 1.007
+  }
+ },
+ "pi0=0.16|auc=0.71|ncal=154|rho=0.5": {
+  "walk_from_first_pass": {
+   "n_fire": 5519,
+   "mean_R_over_alpha_fire": 0.798,
+   "n_fail": 866,
+   "median_R_over_alpha_fail": 1.114,
+   "p90_R_over_alpha_fail": 1.349,
+   "max_R_over_alpha_fail": 1.805
+  },
+  "cp": {
+   "n_fire": 100,
+   "mean_R_over_alpha_fire": 1.031,
+   "n_fail": 52,
+   "median_R_over_alpha_fail": 1.124,
+   "p90_R_over_alpha_fail": 1.276,
+   "max_R_over_alpha_fail": 1.377
+  },
+  "hb": {
+   "n_fire": 79,
+   "mean_R_over_alpha_fire": 0.976,
+   "n_fail": 27,
+   "median_R_over_alpha_fail": 1.058,
+   "p90_R_over_alpha_fail": 1.218,
+   "max_R_over_alpha_fail": 1.324
+  },
+  "bet": {
+   "n_fire": 2,
+   "mean_R_over_alpha_fire": 1.16,
+   "n_fail": 2,
+   "median_R_over_alpha_fail": 1.16,
+   "p90_R_over_alpha_fail": 1.175,
+   "max_R_over_alpha_fail": 1.179
+  }
+ },
+ "pi0=0.22|auc=0.76|ncal=78|rho=0.75": {
+  "walk_from_first_pass": {
+   "n_fire": 14245,
+   "mean_R_over_alpha_fire": 0.569,
+   "n_fail": 823,
+   "median_R_over_alpha_fail": 1.098,
+   "p90_R_over_alpha_fail": 1.274,
+   "max_R_over_alpha_fail": 1.333
+  },
+  "cp": {
+   "n_fire": 2355,
+   "mean_R_over_alpha_fire": 0.6,
+   "n_fail": 40,
+   "median_R_over_alpha_fail": 1.068,
+   "p90_R_over_alpha_fail": 1.22,
+   "max_R_over_alpha_fail": 1.27
+  },
+  "hb": {
+   "n_fire": 2035,
+   "mean_R_over_alpha_fire": 0.556,
+   "n_fail": 10,
+   "median_R_over_alpha_fail": 1.108,
+   "p90_R_over_alpha_fail": 1.206,
+   "max_R_over_alpha_fail": 1.27
+  },
+  "bet": {
+   "n_fire": 342,
+   "mean_R_over_alpha_fire": 0.664,
+   "n_fail": 6,
+   "median_R_over_alpha_fail": 1.085,
+   "p90_R_over_alpha_fail": 1.108,
+   "max_R_over_alpha_fail": 1.114
+  }
+ },
+ "pi0=0.22|auc=0.76|ncal=78|rho=0.5": {
+  "walk_from_first_pass": {
+   "n_fire": 6173,
+   "mean_R_over_alpha_fire": 0.777,
+   "n_fail": 836,
+   "median_R_over_alpha_fail": 1.144,
+   "p90_R_over_alpha_fail": 1.401,
+   "max_R_over_alpha_fail": 1.854
+  },
+  "cp": {
+   "n_fire": 72,
+   "mean_R_over_alpha_fire": 1.066,
+   "n_fail": 50,
+   "median_R_over_alpha_fail": 1.107,
+   "p90_R_over_alpha_fail": 1.23,
+   "max_R_over_alpha_fail": 1.603
+  },
+  "hb": {
+   "n_fire": 71,
+   "mean_R_over_alpha_fire": 1.051,
+   "n_fail": 49,
+   "median_R_over_alpha_fail": 1.106,
+   "p90_R_over_alpha_fail": 1.205,
+   "max_R_over_alpha_fail": 1.298
+  }
+ },
+ "pi0=0.09|auc=0.66|ncal=153|rho=0.75": {
+  "walk_from_first_pass": {
+   "n_fire": 6745,
+   "mean_R_over_alpha_fire": 0.773,
+   "n_fail": 718,
+   "median_R_over_alpha_fail": 1.112,
+   "p90_R_over_alpha_fail": 1.268,
+   "max_R_over_alpha_fail": 1.333
+  },
+  "cp": {
+   "n_fire": 371,
+   "mean_R_over_alpha_fire": 0.874,
+   "n_fail": 55,
+   "median_R_over_alpha_fail": 1.125,
+   "p90_R_over_alpha_fail": 1.236,
+   "max_R_over_alpha_fail": 1.333
+  },
+  "hb": {
+   "n_fire": 330,
+   "mean_R_over_alpha_fire": 0.835,
+   "n_fail": 14,
+   "median_R_over_alpha_fail": 1.114,
+   "p90_R_over_alpha_fail": 1.303,
+   "max_R_over_alpha_fail": 1.333
+  },
+  "bet": {
+   "n_fire": 6,
+   "mean_R_over_alpha_fire": 1.066,
+   "n_fail": 3,
+   "median_R_over_alpha_fail": 1.2,
+   "p90_R_over_alpha_fail": 1.238,
+   "max_R_over_alpha_fail": 1.247
+  }
+ },
+ "pi0=0.09|auc=0.66|ncal=153|rho=0.5": {
+  "walk_from_first_pass": {
+   "n_fire": 1782,
+   "mean_R_over_alpha_fire": 1.142,
+   "n_fail": 1572,
+   "median_R_over_alpha_fail": 1.109,
+   "p90_R_over_alpha_fail": 1.369,
+   "max_R_over_alpha_fail": 1.965
+  },
+  "cp": {
+   "n_fire": 2,
+   "mean_R_over_alpha_fire": 1.586,
+   "n_fail": 2,
+   "median_R_over_alpha_fail": 1.586,
+   "p90_R_over_alpha_fail": 1.622,
+   "max_R_over_alpha_fail": 1.631
+  },
+  "hb": {
+   "n_fire": 2,
+   "mean_R_over_alpha_fire": 1.586,
+   "n_fail": 2,
+   "median_R_over_alpha_fail": 1.586,
+   "p90_R_over_alpha_fail": 1.622,
+   "max_R_over_alpha_fail": 1.631
+  }
+ }
+}

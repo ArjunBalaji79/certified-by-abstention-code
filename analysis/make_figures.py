@@ -63,7 +63,7 @@ def min_accepted(alpha, delta, err_frac):
 
 def fig_floor():
     alphas = np.linspace(0.03, 0.35, 65)
-    fig, ax = plt.subplots(figsize=(3.25, 1.85))
+    fig, ax = plt.subplots(figsize=(3.25, 1.55))
     specs = [(0.0, "-", "#104281", r"$\varepsilon=0$"),
              (0.25, "-", "#2a78d6", r"$\varepsilon=\alpha/4$"),
              (0.5, "-", "#86b6ef", r"$\varepsilon=\alpha/2$")]

@@ -177,7 +177,7 @@ def tab_auc():
             d("jspace_vs_confidence"), d("jspace_vs_surface"), d("probe_vs_jspace")]) + r" \\")
     s = (r"\begin{table}[H]" "\n" r"\centering\small" "\n"
          r"\caption{GSM8K out-of-fold AUC (5-fold, grouped by problem, logistic regression) of each signal, and paired bootstrap differences ($^{*}$: two-sided $p<0.05$, uncorrected). "
-         r"``Random'': J-lens features with a norm-matched random transport. These are cross-validated AUCs on all traces and differ from the frozen-scorer test AUCs of Table~\ref{tab:main}.}"
+         r"``Random'': J-lens features with a norm-matched random transport. These are cross-validated AUCs on all traces and differ from the frozen-scorer test AUCs of Table~\ref{tab:bh}.}"
          "\n" r"\label{tab:auc}" "\n" r"\setlength{\tabcolsep}{4pt}" "\n"
          r"\begin{tabular}{lrr cccccc ccc}" "\n" r"\toprule" "\n"
          r"Model & Traces & Acc. & Conf. & J-lens & Logit lens & Surface & Random & Probe & J$-$Conf. & J$-$Surf. & Probe$-$J \\" "\n" r"\midrule" "\n"

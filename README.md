@@ -1,6 +1,6 @@
 # Certified by Abstention
 
-Code and data for **Certified by Abstention: Distribution-Free Guarantees for Chain-of-Thought Verifiers at Small Calibration Budgets** (under review, AISTATS 2027).
+Code and data for **Certified by Abstention: Distribution-Free Guarantees for Chain-of-Thought Verifiers at Small Calibration Budgets** (Arjun Balaji, Columbia University; preprint, 2026).
 
 Every number, table and figure in the paper regenerates from the cached per-trace scores in `data/` in about 70 minutes on a laptop CPU. No GPU, model weights or API access is needed; those were used only to produce `data/` (see `pipeline/`).
 
@@ -52,4 +52,11 @@ Code: MIT (see `LICENSE`). Data (`data/`): CC BY 4.0. The traces were generated 
 
 ## Citation
 
-Anonymized for review. A citation entry will be added on publication.
+```bibtex
+@misc{balaji2026certified,
+  title  = {Certified by Abstention: Distribution-Free Guarantees for Chain-of-Thought Verifiers at Small Calibration Budgets},
+  author = {Balaji, Arjun},
+  year   = {2026},
+  note   = {arXiv preprint}
+}
+```
